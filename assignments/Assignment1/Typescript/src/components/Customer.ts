@@ -11,7 +11,15 @@ export class Customer implements ICustomer {
     this.name = name;
   }
 
-  transfer(amount: number, acount: IAccount, target: ICustomer) {
+  public transfer(amount: number, acount: IAccount, target: ICustomer) {
     throw new Error("Method not implemented.");
+  }
+
+  public getName(): string {
+    return this.name;
+  }
+
+  public getCpr(): string {
+    return this.cpr;
   }
 }

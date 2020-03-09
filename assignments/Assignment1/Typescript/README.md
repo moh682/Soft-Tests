@@ -7,3 +7,10 @@
 npm i;
 npm run test
 ```
+
+**We were having problem with mocking**
+
+**Made By**
+* Mohammad Omar Hariri
+* Rasmus Jarnborg Friis
+* Andreas Guldborg Heick

@@ -16,12 +16,14 @@ export class Bank implements IBank {
     this.customers = [];
   }
 
+  // ? Returns account that have specific account number;
   public getAccount(accountNumber: string): IAccount {
     return this.accounts.filter(account => account.getAccountNumber() === accountNumber)[0];
   }
 
+  // ? Returns all accounts for a customer
   public getAccounts(customer: ICustomer): IAccount[] {
-    throw new Error("Method not implemented.");
+    return this.accounts.filter(account => account.getCustomer().getCpr() === customer.getCpr());
   }
 
   public setAccount(account: IAccount) {

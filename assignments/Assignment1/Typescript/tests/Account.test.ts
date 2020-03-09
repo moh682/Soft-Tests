@@ -1,5 +1,6 @@
 import * as mocha from 'mocha';
 import { assert, expect } from 'chai';
+import { mock, instance } from 'ts-mockito'
 import { Bank } from '../src/components/Bank';
 import { Customer } from '../src/components/Customer';
 import { Account } from '../src/components/Account';
@@ -87,14 +88,45 @@ describe("Tests for Account class", function () {
     const sourceAccount = new Account(bank, customer, "ABC123123");
     bank.setAccount(targetAccount);
 
+    sourceAccount.transferWithAccount(1000, targetAccount);
+
     const targetMovement = targetAccount.getMovements();
     const sourceMovement = sourceAccount.getMovements();
 
-    assert(targetMovement !== undefined, "Movement of target Account is undefined");
-    assert(sourceMovement !== undefined, "Movement of source Account is undefined");
+    expect(targetMovement, "targetMovement is empty").to.not.be.empty;
+    expect(sourceMovement, "sourceMovement is empty").to.not.be.empty;
 
-
-
+    expect(sourceMovement[0].getAmount()).to.be.equal(-1000);
+    expect(targetMovement[0].getAmount()).to.be.equal(1000);
   })
 
-})
+  it("Test getAccounts function getAccount", function () {
+
+    const bank = new Bank("1231982371", "First Bank");
+    const customer = new Customer("12312321-2123", "moe apple");
+    const targetAccountNumber = "TRX986786";
+    const targetAccount = new Account(bank, customer, targetAccountNumber);
+    const sourceAccount = new Account(bank, customer, "ABC123123");
+
+    expect(bank.getAccounts(customer)).to.not.be.empty;
+    expect(bank.getAccounts(customer).length).to.be.equal(2);
+
+    expect(bank.getAccounts(customer)[0].getCustomer().getCpr())
+      .to.be.equal(customer.getCpr());
+    expect(bank.getAccounts(customer)[1].getCustomer().getCpr())
+      .to.be.equal(customer.getCpr());
+  })
+
+  it("Test getAccount function getAccount", function () {
+
+    const bank = new Bank("1231982371", "First Bank");
+    const customer = new Customer("12312321-2123", "moe apple");
+    const targetAccountNumber = "TRX986786";
+    const targetAccount = new Account(bank, customer, targetAccountNumber);
+    const sourceAccount = new Account(bank, customer, "ABC123123");
+
+    expect(bank.getAccount(targetAccount.getAccountNumber())).to.not.be.undefined;
+    expect(bank.getAccount(sourceAccount.getAccountNumber())).to.not.be.undefined;
+  });
+
+});
