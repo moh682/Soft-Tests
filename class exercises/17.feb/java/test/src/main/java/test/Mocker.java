@@ -36,7 +36,7 @@ public class Mocker implements InvocationHandler {
     if (mockerInvoked == null || methodInvoked == null)
       throw new RuntimeException("hovsa");
     String key = keyOf(methodInvoked);
-    Object returnedValue = mockerInvoked.expectation.put(key, result);
+    mockerInvoked.expectation.put(key, result);
     mockerInvoked = null;
     methodInvoked = null;
   }

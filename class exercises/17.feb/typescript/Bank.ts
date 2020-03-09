@@ -1,3 +1,4 @@
 interface IBank {
   getName(): string;
+
 }
