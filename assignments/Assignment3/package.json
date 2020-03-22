@@ -1,0 +1,27 @@
+{
+	"name": "Assignment3",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "mocha --exit -r ts-node/register ./test/{services,database,logic}/*.test.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"chai": "^4.2.0",
+		"dotenv": "^8.2.0",
+		"mocha": "^7.1.1",
+		"mysql": "^2.18.1",
+		"typescript": "^3.8.3"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.2.11",
+		"@types/mocha": "^7.0.2",
+		"@types/mysql": "^2.15.9"
+	}
+}

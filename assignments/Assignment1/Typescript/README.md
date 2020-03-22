@@ -5,7 +5,7 @@
 **To run test type in the root folder**
 ```bash
 npm i;
-npm run test
+npm run test;
 ```
 
 **We were having problem with mocking**
