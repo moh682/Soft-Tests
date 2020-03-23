@@ -32,7 +32,7 @@ route.get("/account/find", (number))
 
 **Movement CRUD**
 ```ts
-route.get("/movement", (cvr))
+route.get("/movement/find", (cvr))
 route.post("/movement/create", (cvr, name))
 route.delete("/movement/delete", (cvr))
 ```
