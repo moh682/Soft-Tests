@@ -1,4 +1,14 @@
-## Assignment 2 
+## Assignment 2 and 3
+
+**Database is needed to run all the unit tests**
+
+##### Requirements to run the application
+
+-   Mysql server open
+-   Run the sql file in the server
+-   Adjust login credentials for mysql server in .env file
+-   npm install
+-   npm run test
 
 #### Contract for REST API - Banking system
 
@@ -47,16 +57,3 @@ route.get("/customer/find", (cpr))
 
 <img src="./images/useCase1.png" />
 <img src="./images/useCase2.png" />
-
-
-## Assignment 3
-
-**Database is needed to run all the unit tests**
-
-##### Requirements to run the application
-
--   Mysql server open
--   Run the sql file in the server
--   Adjust login credentials for mysql server in .env file
--   npm install
--   npm run test
