@@ -13,11 +13,7 @@ describe('Test Bank', function() {
 		expect(before).to.not.be.empty;
 		// -- Its important to drop in this order because of foreign keys
 		await tm.dropAllConstraints();
-		await tm.dropTable('customers').catch(error => console.error(colors.red('customers'), error));
-		await tm.dropTable('banks').catch(error => console.error(colors.red('banks'), error));
-		await tm.dropTable('movements').catch(error => console.error(colors.red('movements'), error));
-		await tm.dropTable('accounts').catch(error => console.error(colors.red('accounts'), error));
-
+		await tm.dropAll();
 		const after = await tm.getAll();
 		expect(after).to.be.empty;
 	});

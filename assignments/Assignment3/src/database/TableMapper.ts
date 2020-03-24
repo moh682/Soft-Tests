@@ -92,17 +92,13 @@ export class TableMapper implements IMapper<ITable> {
 
 	async dropAll(): Promise<void> {
 		return new Promise(async (resolve, reject) => {
+			const tables = await this.getAll().then(tables => tables.map(table => `drop table ${table.TABLE_NAME}`));
+			tables.unshift('SET FOREIGN_KEY_CHECKS = 0');
 			await this.dropAllConstraints();
 			const conn = await DBConnector.getConnection();
 			conn.query(
 				{
-					sql: `SET @v = ( select concat( 'drop table ', group_concat(a.table_name))
-            from information_schema.tables a 
-            where a.table_name like 'dynamic_%'
-            AND a.table_schema = DATABASE()
-        ;);
-        PREPARE s FROM @v; 
-        EXECUTE s;`,
+					sql: tables.join(';'),
 				},
 				(error, values) => {
 					conn.release();
