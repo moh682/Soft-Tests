@@ -28,13 +28,14 @@ describe('Test Bank', function() {
 			.then(value => {
 				expect(before).to.be.empty;
 				tm.executeFile(__dirname + '/../../sql.sql').then(() => {
+					// -- It takes time to create the tables so i wait for sql to finish to execute the next query
 					this.timeout(10000);
 					setTimeout(async () => {
 						await tm.getAll().then(after => {
 							expect(after.length).to.be.equal(4);
 							done();
 						});
-					}, 1000);
+					}, 30);
 				});
 			})
 			.catch(error => console.error(error));
