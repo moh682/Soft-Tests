@@ -9,7 +9,6 @@ export class MovementMapper implements IMapper<IMovement> {
 			connection.query({ sql: 'SELECT * FROM movements' }, (error, results) => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve(results);
@@ -41,7 +40,6 @@ export class MovementMapper implements IMapper<IMovement> {
 				(error, result) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve();
@@ -58,7 +56,6 @@ export class MovementMapper implements IMapper<IMovement> {
 				(error, results) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve(results);
@@ -85,7 +82,6 @@ export class MovementMapper implements IMapper<IMovement> {
 			connection.query({ sql: 'DELETE FROM movements' }, error => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve();

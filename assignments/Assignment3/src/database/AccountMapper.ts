@@ -9,7 +9,6 @@ export class AccountMapper implements IMapper<IAccount> {
 			connection.query({ sql: 'SELECT * FROM accounts' }, (error, results) => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve(results);
@@ -23,7 +22,6 @@ export class AccountMapper implements IMapper<IAccount> {
 			connection.query({ sql: 'SELECT * FROM accounts WHERE number=?', values: [number] }, (error, results) => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve(results[0]);
@@ -42,7 +40,6 @@ export class AccountMapper implements IMapper<IAccount> {
 				(error, result) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve();
@@ -71,7 +68,6 @@ export class AccountMapper implements IMapper<IAccount> {
 				(error, result) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve();
@@ -94,7 +90,6 @@ export class AccountMapper implements IMapper<IAccount> {
 			connection.query({ sql: 'DELETE FROM accounts WHERE number = ? ', values: [number] }, error => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve();
@@ -108,7 +103,6 @@ export class AccountMapper implements IMapper<IAccount> {
 			connection.query({ sql: 'DELETE FROM accounts' }, error => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve();

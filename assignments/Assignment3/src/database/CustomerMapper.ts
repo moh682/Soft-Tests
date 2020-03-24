@@ -9,7 +9,6 @@ export class CustomerMapper implements IMapper<ICustomer> {
 			connection.query({ sql: 'SELECT * FROM customers' }, (error, results) => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve(results);
@@ -28,7 +27,6 @@ export class CustomerMapper implements IMapper<ICustomer> {
 				(error, result) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve(result[0]);
@@ -52,7 +50,6 @@ export class CustomerMapper implements IMapper<ICustomer> {
 				(error, result) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve();
@@ -75,7 +72,6 @@ export class CustomerMapper implements IMapper<ICustomer> {
 			connection.query({ sql: 'DELETE FROM customers where cpr = ?', values: [cpr] }, error => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve();
@@ -89,7 +85,6 @@ export class CustomerMapper implements IMapper<ICustomer> {
 			connection.query({ sql: 'DELETE FROM customers' }, error => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve();

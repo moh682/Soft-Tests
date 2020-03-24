@@ -1,25 +1,11 @@
--- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema testAsssignment
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema testAsssignment
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `testAsssignment` ;
 USE `testAsssignment` ;
 
--- -----------------------------------------------------
--- Table `testAsssignment`.`banks`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `testAsssignment`.`banks` (
   `cvr` VARCHAR(8) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
@@ -27,9 +13,6 @@ CREATE TABLE IF NOT EXISTS `testAsssignment`.`banks` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `testAsssignment`.`customers`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `testAsssignment`.`customers` (
   `cpr` VARCHAR(13) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
@@ -42,9 +25,6 @@ CREATE TABLE IF NOT EXISTS `testAsssignment`.`customers` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `testAsssignment`.`accounts`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `testAsssignment`.`accounts` (
   `number` INT NOT NULL AUTO_INCREMENT,
   `balance` DOUBLE(255,3) NOT NULL DEFAULT '0.000',
@@ -63,9 +43,6 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 3;
 
 
--- -----------------------------------------------------
--- Table `testAsssignment`.`movements`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `testAsssignment`.`movements` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `amount` DOUBLE(255,3) NOT NULL,

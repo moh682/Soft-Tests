@@ -9,7 +9,6 @@ export class BankMapper implements IMapper<IBank> {
 			connection.query({ sql: 'SELECT * FROM banks' }, (error, results) => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve(results);
@@ -28,7 +27,6 @@ export class BankMapper implements IMapper<IBank> {
 				(error, result) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve(result[0]);
@@ -52,7 +50,6 @@ export class BankMapper implements IMapper<IBank> {
 				(error, result) => {
 					connection.release();
 					if (error) {
-						console.error(error);
 						reject(error);
 					}
 					resolve();
@@ -73,7 +70,6 @@ export class BankMapper implements IMapper<IBank> {
 			connection.query({ sql: 'DELETE FROM banks WHERE cvr=?', values: [cvr] }, error => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve();
@@ -87,7 +83,6 @@ export class BankMapper implements IMapper<IBank> {
 			connection.query({ sql: 'DELETE FROM banks' }, error => {
 				connection.release();
 				if (error) {
-					console.error(error);
 					reject(error);
 				}
 				resolve();

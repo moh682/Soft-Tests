@@ -1,5 +1,5 @@
 import * as mocha from 'mocha';
-import { expect } from 'chai';
+import { expect, should } from 'chai';
 import { BankMapper } from '../../src/database/BankMapper';
 import { CustomerMapper } from '../../src/database/CustomerMapper';
 import { MovementMapper } from '../../src/database/MovementMapper';
@@ -15,35 +15,61 @@ describe('Test Bank', function() {
 	const b = { cvr: '12345678', name: 'Nordea' };
 
 	this.beforeAll(function(done) {
-		mm.deleteAll().finally(() => {
-			am.deleteAll().finally(() => {
-				cm.deleteAll().finally(() => {
-					bm.deleteAll().finally(() => {
-						done();
+		mm.deleteAll()
+			.catch(error => {
+				should().not.exist(error, 'error occured');
+			})
+			.finally(() => {
+				am.deleteAll()
+					.catch(error => {
+						should().not.exist(error, 'error occured');
+					})
+					.finally(() => {
+						cm.deleteAll()
+							.catch(error => {
+								should().not.exist(error, 'error occured');
+							})
+							.finally(() => {
+								bm.deleteAll()
+									.catch(error => {
+										should().not.exist(error, 'error occured');
+									})
+									.finally(() => {
+										done();
+									});
+							});
 					});
-				});
 			});
-		});
 	});
 
 	it('test insert bank', async function() {
-		await bm.insert(b);
-		const bank = await bm.getByCvr(b.cvr);
+		await bm.insert(b).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
+		const bank: any = await bm.getByCvr(b.cvr).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
 
 		expect(bank).to.not.be.undefined;
 		expect(bank.cvr).to.be.equal(b.cvr);
 	});
 
 	it('test get bank', async function() {
-		const bank = await bm.getByCvr(b.cvr);
+		const bank: any = await bm.getByCvr(b.cvr).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
 
 		expect(bank).to.not.be.undefined;
 		expect(bank.cvr).to.be.equal(b.cvr);
 	});
 
 	it('test delete bank', async function() {
-		await bm.deleteByCvr(b.cvr);
-		const bank = await bm.getByCvr(b.cvr);
+		await bm.deleteByCvr(b.cvr).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
+		const bank = await bm.getByCvr(b.cvr).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
 
 		expect(bank).to.be.undefined;
 	});

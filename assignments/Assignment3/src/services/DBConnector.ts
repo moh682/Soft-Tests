@@ -20,6 +20,7 @@ export class DBConnector {
 				user: MYSQL_USERNAME,
 				password: MYSQL_PASSWORD,
 				database: MYSQL_DATABASE,
+				multipleStatements: true,
 			});
 		}
 		return new Promise(resolve => {

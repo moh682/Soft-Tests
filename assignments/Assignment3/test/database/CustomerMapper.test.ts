@@ -1,5 +1,5 @@
 import * as mocha from 'mocha';
-import { expect } from 'chai';
+import { expect, should } from 'chai';
 import { BankMapper } from '../../src/database/BankMapper';
 import { CustomerMapper } from '../../src/database/CustomerMapper';
 import { MovementMapper } from '../../src/database/MovementMapper';
@@ -25,24 +25,39 @@ describe('Test customer', function() {
 	});
 
 	it('test insert customer', async function() {
-		await bm.insert(b);
-		await cm.insert(c);
-		const customer = await cm.getByNumber(c.cpr);
+		await bm.insert(b).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
+		await cm.insert(c).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
+		const customer: ICustomer = await cm.getByNumber(c.cpr).catch(error => {
+			should().not.exist(error, 'error occured');
+			return {} as ICustomer;
+		});
 
 		expect(customer).to.not.be.undefined;
 		expect(customer.bank_cvr).to.be.equal(b.cvr);
 	});
 
 	it('test get customer', async function() {
-		const customer = await cm.getByNumber(c.cpr);
+		const customer = await cm.getByNumber(c.cpr).catch(error => {
+			should().not.exist(error, 'error occured');
+			return {} as ICustomer;
+		});
 
 		expect(customer).to.not.be.undefined;
 		expect(customer.cpr).to.be.equal(c.cpr);
 	});
 
 	it('test delete customer', async function() {
-		await cm.deleteByNumber(c.cpr);
-		const customer = await cm.getByNumber(c.cpr);
+		await cm.deleteByNumber(c.cpr).catch(error => {
+			should().not.exist(error, 'error occured');
+		});
+		const customer = await cm.getByNumber(c.cpr).catch(error => {
+			should().not.exist(error, 'error occured');
+			return {} as ICustomer;
+		});
 
 		expect(customer).to.be.undefined;
 	});
