@@ -8,6 +8,8 @@
 -   npm install
 -   npm run test
 
+**IMPORTANT:** remember to give the appropriate permission to the user
+
 #### Contract for REST API - Banking system
 **Team**: #TypeScriptCarry
 **member**: Andreas Guldborg Heick
