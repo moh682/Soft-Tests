@@ -22,9 +22,13 @@ describe('Test Customer route', function () {
     request(server)
       .post('/customer/create')
       .send(customer)
-      .end((error, res) => {
+      .end(async (error, res) => {
         expect(error).to.be.null;
         expect(res.status).to.be.equal(200);
+        const c = await cm.getByNumber(customer.cpr);
+        expect(c.name).to.be.equal(customer.name);
+        expect(c.bank_cvr).to.be.equal(customer.bank_cvr);
+        expect(c.cpr).to.be.equal(customer.cpr);
         done();
       });
   });
