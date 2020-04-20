@@ -44,11 +44,11 @@ describe('Test Account route', function () {
   });
   it('transfer amount to account', function (done) {
     request(server)
-      .delete('/account/transferAmountTo/')
+      .delete('/account/transferAmountTo')
       .send({
-        ownacc: account.number, 
+        ownAccountNumber: account.number, 
         amount: 1000, 
-        targetacc: 1234567
+        targetAccountNumber: 1234567
       })
       .end(async (error, res) => {
         expect(error).to.be.null;
@@ -82,7 +82,7 @@ describe('Test Account route', function () {
   });
   it('delete account', function (done) {
     request(server)
-      .delete('/account/delete/')
+      .delete('/account/delete')
       .send({
         number: account.number,
       })
