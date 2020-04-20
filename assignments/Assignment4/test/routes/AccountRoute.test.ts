@@ -9,23 +9,22 @@ use(chaiHTTP);
 
 describe('Test Account route', function () {
   this.timeout(1000);
-  
 
   const am = new AccountMapper();
 
   const account: IAccount = {
-      balance: 1234,
-      bank_cvr: '213123123123',
-      customer_cpr: '13131213123123',
-      number: 123456
+    balance: 1234,
+    bank_cvr: '213123123123',
+    customer_cpr: '13131213123123',
+    number: 123456,
   };
 
   const otherAccount: IAccount = {
     balance: 3000,
     bank_cvr: '213123123123',
     customer_cpr: '13131213123123',
-    number: 1234567
-  }
+    number: 1234567,
+  };
 
   it('create an account', function (done) {
     request(server)
@@ -34,7 +33,7 @@ describe('Test Account route', function () {
       .end(async (error, res) => {
         expect(error).to.be.null;
         expect(res.status).to.be.equal(200);
-        const a = await am.getByNumber(account.number);
+        const a = await am.getByNumber(account.number as number);
         expect(a.balance).to.be.equal(account.balance);
         expect(a.bank_cvr).to.be.equal(account.bank_cvr);
         expect(a.customer_cpr).to.be.equal(account.customer_cpr);
@@ -46,15 +45,15 @@ describe('Test Account route', function () {
     request(server)
       .delete('/account/transferAmountTo')
       .send({
-        ownAccountNumber: account.number, 
-        amount: 1000, 
-        targetAccountNumber: 1234567
+        ownAccountNumber: account.number,
+        amount: 1000,
+        targetAccountNumber: 1234567,
       })
       .end(async (error, res) => {
         expect(error).to.be.null;
         expect(res.status).to.be.equal(200);
-        const a = await am.getByNumber(account.number);
-        const a2 = await am.getByNumber(otherAccount.number);
+        const a = await am.getByNumber(account.number as number);
+        const a2 = await am.getByNumber(otherAccount.number as number);
         expect(a.balance).to.be.equal(account.balance + 1000);
         expect(a2.balance).to.be.equal(otherAccount.balance - 1000);
         done();
@@ -89,10 +88,9 @@ describe('Test Account route', function () {
       .end(async (error, res) => {
         expect(error).to.be.null;
         expect(res.status).to.be.equal(200);
-        const a = await am.getByNumber(account.number);
+        const a = await am.getByNumber(account.number as number);
         expect(a).to.be.undefined;
         done();
       });
   });
-
 });

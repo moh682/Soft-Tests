@@ -9,17 +9,16 @@ use(chaiHTTP);
 
 describe('Test Movement route', function () {
   this.timeout(1000);
-  
 
   const mm = new MovementMapper();
 
   const movement: IMovement = {
-	id: 12,
-	time: Date.now().toString(),
-	amount: 120,
-	accountFrom: 12121212,
-	accountTo: 12121212
-  };
+    id: 12,
+    time: Date.now().toString(),
+    amount: 120,
+    accountFrom: 12121212,
+    accountTo: 12121212,
+  } as IMovement;
 
   it('create a movement', function (done) {
     request(server)
@@ -28,7 +27,7 @@ describe('Test Movement route', function () {
       .end(async (error, res) => {
         expect(error).to.be.null;
         expect(res.status).to.be.equal(200);
-        const m = await mm.getById(movement.id);
+        const m = await mm.getById!(movement.id as number);
         expect(m.id).to.be.equal(movement.id);
         expect(m.amount).to.be.equal(movement.amount);
         expect(m.time).to.be.equal(movement.time);
@@ -80,7 +79,7 @@ describe('Test Movement route', function () {
       .end(async (error, res) => {
         expect(error).to.be.null;
         expect(res.status).to.be.equal(200);
-        const m = await mm.getById(movement.id);
+        const m = await mm.getById!(movement.id as number);
         expect(m).to.be.undefined;
         done();
       });
