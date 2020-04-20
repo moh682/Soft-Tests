@@ -1,21 +1,56 @@
 import * as mocha from 'mocha';
 import chaiHTTP from 'chai-http';
-import { use, request, expect } from 'chai';
+import { use, request, expect, should } from 'chai';
 import { ICustomer } from '../../src/interfaces/ICustomer';
 import { CustomerMapper } from '../../src/database/CustomerMapper';
 
 import { server } from '../../src/server';
+import { BankMapper } from '../../src/database/BankMapper';
+import { MovementMapper } from '../../src/database/MovementMapper';
+import { AccountMapper } from '../../src/database/AccountMapper';
 use(chaiHTTP);
 
 describe('Test Customer route', function () {
-  this.timeout(1000);
+  this.timeout(2500);
 
   const cm = new CustomerMapper();
+  const bm = new BankMapper();
+  const mm = new MovementMapper();
+  const am = new AccountMapper();
+  const b = { cvr: '12345678', name: 'Nordea' };
 
+  this.beforeAll(function (done) {
+    mm.deleteAll()
+      .catch(error => {
+        should().not.exist(error, 'error occured');
+      })
+      .finally(() => {
+        am.deleteAll()
+          .catch(error => {
+            should().not.exist(error, 'error occured');
+          })
+          .finally(() => {
+            cm.deleteAll()
+              .catch(error => {
+                should().not.exist(error, 'error occured');
+              })
+              .finally(() => {
+                bm.deleteAll()
+                  .catch(error => {
+                    should().not.exist(error, 'error occured');
+                  })
+                  .finally(async () => {
+                    await bm.insert(b);
+                    done();
+                  });
+              });
+          });
+      });
+  });
   const customer: ICustomer = {
     name: 'peter',
-    bank_cvr: '213123123123',
-    cpr: '13131213123123',
+    bank_cvr: b.cvr,
+    cpr: '121233212',
   };
 
   it('create a customer', function (done) {

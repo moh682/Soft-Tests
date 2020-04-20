@@ -5,7 +5,7 @@ const route = express();
 
 const mm = new MovementMapper();
 
-route.post('/movement/create', async (req: Request, res: Response) => {
+route.post('/create', async (req: Request, res: Response) => {
   const { id, time, amount, accountFrom, accountTo } = req.body as IMovement;
 
   try {
@@ -16,33 +16,34 @@ route.post('/movement/create', async (req: Request, res: Response) => {
   }
 });
 
-route.post('/movement/find', async (req: Request, res: Response) => {
+route.get('/find', async (req: Request, res: Response) => {
   const id: number = req.body.id as number;
 
   try {
     const foundMovement = await mm.getById!(id as number);
-    return res.status(200).send('Found movement: ' + foundMovement);
+    return res.json(foundMovement);
   } catch (error) {
     return res.status(500).send(error);
   }
 });
 
-route.post('/movement/getAll', async (req: Request, res: Response) => {
+route.get('/all', async (req: Request, res: Response) => {
   try {
     const foundMovements = await mm.getAll!();
-    return res.status(200).send('All found movements: ' + foundMovements);
+    return res.json(foundMovements);
   } catch (error) {
     return res.status(500).send(error);
   }
 });
 
-route.post('/movement/delete', async (req: Request, res: Response) => {
+route.delete('/delete', async (req: Request, res: Response) => {
   const id = req.body.id;
 
   try {
     const deletedMovement = await mm.deleteById!(id as number);
     return res.status(200).send('Deleted movement' + deletedMovement);
   } catch (error) {
+    console.error(error);
     return res.status(500).send(error);
   }
 });

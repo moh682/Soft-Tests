@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `testAsssignment`.`movements` (
   `amount` DOUBLE(255,3) NOT NULL,
   `accountTo` INT NOT NULL,
   `accountFrom` INT NOT NULL,
-  `currentDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   INDEX `movements_ibfk_1` (`accountTo` ASC),
