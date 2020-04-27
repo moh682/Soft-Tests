@@ -1,4 +1,4 @@
-## Assignment 2 and 3
+## Assignment 2-4
 **Database is needed to run all the unit tests**
 
 ##### Requirements to run the application
