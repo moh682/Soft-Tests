@@ -1,7 +1,17 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
+import colors from 'colors';
+import { DBConnector } from './services/DBConnector';
 
 const app = Express();
+
+if (process.env.ENV !== 'TEST') {
+  (async () => {
+    await DBConnector.getConnection();
+    const dbStatus = await DBConnector.getConnectionState();
+    console.log(colors.bgBlack('MYSQL Connection status: ') + dbStatus);
+  })();
+}
 
 // --- Routes ---
 import { MovementRoute } from './routes/MovementRoute';

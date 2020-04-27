@@ -1,5 +1,5 @@
 {
-  "name": "Assignment3",
+  "name": "Assignment4",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --exit -r ts-node/register ./test/{services,database,logic,routes,}/*.test.ts",
+    "test": "ENV=TEST mocha --exit -r ts-node/register ./test/{services,database,logic,routes,}/*.test.ts",
     "start": "ENV=DEV nodemon -e ts,js --exec ts-node ./src/server.ts"
   },
   "keywords": [],
