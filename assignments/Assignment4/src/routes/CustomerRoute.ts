@@ -3,15 +3,16 @@ import { ICustomer } from '../interfaces/ICustomer';
 import { CustomerMapper } from '../database/CustomerMapper';
 const route = express();
 
+const cm = new CustomerMapper();
+
 route.post('/create', async (req, res, next) => {
   const name = req.body.name;
   const bank_cvr = req.body.bank_cvr;
   const cpr = req.body.cpr;
 
   try {
-    const cm = new CustomerMapper();
-    const createdCustomer = await cm.insert({ cpr, name, bank_cvr } as ICustomer);
-    return res.status(200).send('Customer created: ' + createdCustomer);
+    await cm.insert({ cpr, name, bank_cvr } as ICustomer);
+    return res.status(200).send(`Creation of customer with name ${name} has been successful`);
   } catch (error) {
     return res.status(500).send(error);
   }
@@ -21,7 +22,6 @@ route.get('/find', async (req, res, next) => {
   const cpr = req.body.cpr;
 
   try {
-    const cm = new CustomerMapper();
     const foundCustomer = await cm.getByNumber(cpr);
     return res.json(foundCustomer);
   } catch (error) {
@@ -33,9 +33,8 @@ route.delete('/delete', async (req, res, next) => {
   const cpr = req.body.cpr;
 
   try {
-    const cm = new CustomerMapper();
     const deletedCustomer = await cm.deleteByNumber(cpr);
-    return res.status(200).send('Deleted customer' + deletedCustomer);
+    return res.status(200).send(`Deletion of customer with cpr: ${cpr} has been successful`);
   } catch (error) {
     return res.status(500).send(error);
   }

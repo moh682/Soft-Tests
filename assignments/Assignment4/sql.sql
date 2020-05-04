@@ -7,16 +7,16 @@ CREATE SCHEMA IF NOT EXISTS `testAsssignment` ;
 USE `testAsssignment` ;
 
 CREATE TABLE IF NOT EXISTS `testAsssignment`.`banks` (
-  `cvr` VARCHAR(8) NOT NULL,
+  `cvr` VARCHAR(255) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   UNIQUE INDEX `cvr` (`cvr` ASC))
 ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `testAsssignment`.`customers` (
-  `cpr` VARCHAR(13) NOT NULL,
+  `cpr` VARCHAR(255) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
-  `bank_cvr` VARCHAR(13) NULL DEFAULT NULL,
+  `bank_cvr` VARCHAR(255) NULL DEFAULT NULL,
   UNIQUE INDEX `cpr` (`cpr` ASC),
   INDEX `bank_cvr` (`bank_cvr` ASC),
   CONSTRAINT `customers_ibfk_1`
@@ -28,8 +28,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `testAsssignment`.`accounts` (
   `number` INT NOT NULL AUTO_INCREMENT,
   `balance` DOUBLE(255,3) NOT NULL DEFAULT '0.000',
-  `customer_cpr` VARCHAR(13) NOT NULL,
-  `bank_cvr` VARCHAR(8) NOT NULL,
+  `customer_cpr` VARCHAR(255) NOT NULL,
+  `bank_cvr` VARCHAR(255) NOT NULL,
   UNIQUE INDEX `number` (`number` ASC),
   INDEX `customer_cpr` (`customer_cpr` ASC),
   INDEX `bank_cvr` (`bank_cvr` ASC),

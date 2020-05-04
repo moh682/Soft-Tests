@@ -10,8 +10,8 @@ route.post('/create', async (req, res, next) => {
   const name = req.body.name;
 
   try {
-    const createdBank = await bm.insert({ cvr, name } as IBank);
-    return res.status(200).send('Bank created: ' + createdBank);
+    await bm.insert({ cvr, name } as IBank);
+    return res.status(200).send(`Creation of bank with cvr: ${cvr} has been successful`);
   } catch (error) {
     return res.status(500).send(error);
   }
@@ -32,8 +32,8 @@ route.delete('/delete', async (req, res, next) => {
   const cvr = req.body.cvr;
 
   try {
-    const deletedBank = await bm.deleteByCvr(cvr);
-    return res.status(200).send('Deleted bank' + deletedBank);
+    await bm.deleteByCvr(cvr);
+    return res.status(200).send(`Deletion of bank with cvr: ${cvr} has been successful`);
   } catch (error) {
     return res.status(500).send(error);
   }

@@ -9,8 +9,8 @@ route.post('/create', async (req: Request, res: Response) => {
   const { id, time, amount, accountFrom, accountTo } = req.body as IMovement;
 
   try {
-    const createdMovement = await mm.insert({ id, time, amount, accountFrom, accountTo } as IMovement);
-    return res.status(200).send('Movement created: ' + createdMovement);
+    await mm.insert({ id, time, amount, accountFrom, accountTo } as IMovement);
+    return res.status(200).send(`Creation of movement with id: ${id} has been successful`);
   } catch (error) {
     return res.status(500).send(error);
   }
@@ -40,8 +40,8 @@ route.delete('/delete', async (req: Request, res: Response) => {
   const id = req.body.id;
 
   try {
-    const deletedMovement = await mm.deleteById!(id as number);
-    return res.status(200).send('Deleted movement' + deletedMovement);
+    await mm.deleteById!(id as number);
+    return res.status(200).send(`Deletion of movement with id: ${id} has been successful`);
   } catch (error) {
     console.error(error);
     return res.status(500).send(error);

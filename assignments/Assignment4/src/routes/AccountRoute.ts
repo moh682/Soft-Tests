@@ -14,9 +14,8 @@ route.post('/transferAmountTo', async (req, res, next) => {
 
   try {
     await ac.transferAmountTo(ownAccountNumber, amount, targetAccountNumber);
-    return res.status(200).send('Transfered: ' + amount + ' to ' + targetAccountNumber + ' from ' + ownAccountNumber);
+    return res.status(200).json({ Transfered: amount, to: targetAccountNumber, from: ownAccountNumber });
   } catch (error) {
-    console.error(error);
     return res.status(500).send(error);
   }
 });
@@ -28,10 +27,9 @@ route.post('/create', async (req, res, next) => {
   const bank_cvr = req.body.bank_cvr;
 
   try {
-    const createdAccount = await am.insert({ number, balance, customer_cpr, bank_cvr } as IAccount);
-    return res.status(200).json(createdAccount);
+    await am.insert({ number, balance, customer_cpr, bank_cvr } as IAccount);
+    return res.status(200).send(`Creation of account with number: ${number} has been successful`);
   } catch (error) {
-    console.error(error);
     return res.status(500).send(error);
   }
 });
@@ -43,7 +41,6 @@ route.get('/find', async (req, res, next) => {
     const foundAccount = await am.getByNumber(number).catch(error => console.error(error));
     return res.send(foundAccount);
   } catch (error) {
-    console.error(error);
     return res.status(500).send(error);
   }
 });
@@ -53,9 +50,8 @@ route.delete('/delete', async (req, res, next) => {
 
   try {
     const deletedAccount = await am.deleteByNumer(number);
-    return res.status(200).json(deletedAccount);
+    return res.status(200).send(`Deletion of movement with number: ${number} has been successful`);
   } catch (error) {
-    console.error(error);
     return res.status(500).send(error);
   }
 });
