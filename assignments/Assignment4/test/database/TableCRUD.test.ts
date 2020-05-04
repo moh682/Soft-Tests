@@ -3,7 +3,7 @@ import { expect, Assertion, should } from 'chai';
 import colors from 'colors';
 import { TableMapper } from '../../src/database/TableMapper';
 
-describe('Test Bank', function () {
+describe('Test CRUD of tables', function () {
   const tm = new TableMapper();
 
   this.timeout(10000);
@@ -31,7 +31,7 @@ describe('Test Bank', function () {
               expect(after.length).to.be.equal(4);
               done();
             });
-          }, 30);
+          }, 100);
         });
       })
       .catch(error => console.error(error));

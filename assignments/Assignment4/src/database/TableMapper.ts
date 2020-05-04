@@ -18,7 +18,7 @@ export class TableMapper implements IMapper<ITable> {
       const conn = await DBConnector.getConnection();
       conn.query(
         {
-          sql: `SET FOREIGN_KEY_CHECKS = 0; DROP TABLE ${table.TABLE_NAME};`,
+          sql: `SET FOREIGN_KEY_CHECKS = 0; DROP TABLE ${process.env.ZSH ? table.TABLE_NAME : table.table_name};`,
         },
         (error, values) => {
           conn.release();
@@ -92,7 +92,9 @@ export class TableMapper implements IMapper<ITable> {
 
   async dropAll(): Promise<void> {
     return new Promise(async (resolve, reject) => {
-      const tables = await this.getAll().then(tables => tables.map(table => `drop table ${table.TABLE_NAME}`));
+      const tables = await this.getAll().then(tables =>
+        tables.map(table => `drop table ${process.env.ZSH ? table.TABLE_NAME : table.table_name}`),
+      );
       tables.unshift('SET FOREIGN_KEY_CHECKS = 0');
       await this.dropAllConstraints();
       const conn = await DBConnector.getConnection();
