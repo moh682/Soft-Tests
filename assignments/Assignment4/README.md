@@ -4,6 +4,12 @@
 
 ##### Requirements to run the application
 
+* FOR WINDOWS USE GIT BASH AS TERMINAL!!!
+
+You need git bash to set environment variables, cmd and powershell doesn't do this
+
+##### To run tests
+
 - Mysql server open
 - Run the sql file in the server
 - Adjust login credentials for mysql server in .env file
