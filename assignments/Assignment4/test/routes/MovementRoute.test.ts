@@ -19,7 +19,7 @@ describe('Test Movement route', function () {
   const bm = new BankMapper();
   const cm = new CustomerMapper();
   const am = new AccountMapper();
-  const b = { cvr: '12345678', name: 'Nordea' };
+  const b = { cvr: '12345678', name: 'Rasmus Qviklån' };
   const c: ICustomer = { bank_cvr: b.cvr, cpr: '123123221', name: 'Mohammad hariri' };
   const account: IAccount = {
     number: 123123,
