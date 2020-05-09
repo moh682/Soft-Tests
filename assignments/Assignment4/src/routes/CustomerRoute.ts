@@ -29,6 +29,15 @@ route.get('/find', async (req, res, next) => {
   }
 });
 
+route.get('/all', async (req, res, next) => {
+  try {
+    const customers = await cm.getAll();
+    return res.json(customers);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+
 route.delete('/delete', async (req, res, next) => {
   const cpr = req.body.cpr;
 

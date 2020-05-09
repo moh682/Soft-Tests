@@ -2,6 +2,10 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import colors from 'colors';
 import { DBConnector } from './services/DBConnector';
+import { SERVER_PORT } from './constants';
+import cors from 'cors';
+
+const PORT = SERVER_PORT || 5000;
 
 const app = Express();
 
@@ -20,16 +24,17 @@ import { AccountRoute } from './routes/AccountRoute';
 import { CustomerRoute } from './routes/CustomerRoute';
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/movement', MovementRoute);
 app.use('/bank', BankRoute);
 app.use('/account', AccountRoute);
 app.use('/customer', CustomerRoute);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`
   The server is currently running on
-  http://localhost:3000`);
+  http://localhost:${PORT}`);
 });
 
 export { app as server };

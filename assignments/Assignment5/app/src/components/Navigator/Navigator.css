@@ -1,0 +1,32 @@
+.navigator-container {
+  width: 100%;
+}
+
+.navigator-content {
+  width: 100%;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navigator-content-list {
+  list-style-type: none;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navigator-content-list > li {
+  margin-right: 60px;
+	float: left;
+	color: black;
+}
+
+.navigator-route {
+	color: black;
+}
+
+.navigator-route:hover {
+	cursor: pointer;
+}
+

@@ -1,0 +1,25 @@
+.circle1 {
+	clip-path:ellipse(80% 90% at 50% 0%);
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	background-color: #007981;
+	width: 100%;
+}
+.circle2 {
+	clip-path:ellipse(90% 92% at 50% 0%);
+
+	height: 100%;
+	position: absolute;
+	z-index: -2;
+	background-color: #3DA1A9;
+	width: 100%;
+}
+.circle3 {
+	clip-path:ellipse(100% 94% at 50% 0%);
+	height: 100%;
+	position: absolute;
+	z-index: -3;
+	background-color: #6BCBD3;
+	width: 100%;
+}
