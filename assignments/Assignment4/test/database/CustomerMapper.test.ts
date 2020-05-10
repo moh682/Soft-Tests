@@ -12,7 +12,7 @@ describe('Test customer', function() {
 	const cm = new CustomerMapper();
 	const mm = new MovementMapper();
 	const am = new AccountMapper();
-	const b: IBank = { cvr: '12345678', name: 'Nordea' };
+	const b: IBank = { cvr: '12345678', name: 'Rasmus Qviklån' };
 	const c: ICustomer = { bank_cvr: b.cvr, cpr: '050196-2132', name: 'Mohammad hariri' };
 	this.beforeAll(function(done) {
 		mm.deleteAll().finally(() => {

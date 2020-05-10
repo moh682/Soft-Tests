@@ -12,7 +12,7 @@ describe('Test Account', function () {
   const cm = new CustomerMapper();
   const mm = new MovementMapper();
   const am = new AccountMapper();
-  const b = { cvr: '12345678', name: 'Nordea' };
+  const b = { cvr: '12345678', name: 'Rasmus Qviklån' };
   const c: ICustomer = { bank_cvr: b.cvr, cpr: '050196-2132', name: 'Mohammad hariri' };
   const a: IAccount = { balance: 1000, bank_cvr: b.cvr, customer_cpr: c.cpr, number: 1 };
 

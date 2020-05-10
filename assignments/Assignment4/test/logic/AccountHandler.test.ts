@@ -18,7 +18,7 @@ describe('Test AccountHandler logic', function() {
 
 	const bank: IBank = {
 		cvr: '12345678',
-		name: 'Nordea',
+		name: 'Rasmus Qviklån',
 	};
 	const customer: ICustomer = {
 		bank_cvr: bank.cvr,
