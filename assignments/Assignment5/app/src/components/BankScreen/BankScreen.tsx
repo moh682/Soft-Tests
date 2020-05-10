@@ -1,6 +1,14 @@
 import * as React from 'react';
 import { Card } from '../Card/Card';
-import { white, PrimaryLightest, PrimaryDarker, PrimaryLighter, PrimaryDarkest, Primary } from '../../contants';
+import {
+  white,
+  PrimaryLightest,
+  PrimaryDarker,
+  PrimaryLighter,
+  PrimaryDarkest,
+  Primary,
+  PrimaryOrange,
+} from '../../contants';
 import { BankService } from '../../services/BankService';
 import { StorageService } from '../../services/StorageService';
 import { InputField } from '../InputField/InputField';
@@ -108,7 +116,7 @@ class BankScreen extends React.Component<IBankProps, IBankState> {
                     inputFieldColor={PrimaryLightest}
                     placeholder="cvr"
                   />
-                  <Button onClick={() => this.onCreateBank()} label="Create Bank" color={PrimaryDarker} />
+                  <Button onClick={() => this.onCreateBank()} label="Create Bank" color={PrimaryOrange} />
                 </div>
               )}
             </Card>
@@ -128,7 +136,7 @@ class BankScreen extends React.Component<IBankProps, IBankState> {
                     }}
                     placeholder="cvr of the bank"
                   />
-                  <Button onClick={() => this.onDeleteBank()} label="Delete Bank" color={PrimaryDarker} />
+                  <Button onClick={() => this.onDeleteBank()} label="Delete Bank" color={PrimaryOrange} />
                 </div>
               )}
             </Card>

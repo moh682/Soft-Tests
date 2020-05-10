@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card } from '../Card/Card';
-import { white, PrimaryLightest, PrimaryDarker } from '../../contants';
+import { white, PrimaryLightest, PrimaryDarker, PrimaryOrange } from '../../contants';
 import { IMovement } from '../../interfaces/IMovement';
 import { MovementService } from '../../services/MovementService';
 import { InputField } from '../InputField/InputField';
@@ -72,7 +72,7 @@ export class HomeScreen extends React.Component<IHomeProps, IHomeState> {
                     onChange={e => {}}
                     placeholder="name"
                   />
-                  <Button onClick={() => {}} label="Create Bank" color={PrimaryDarker} />
+                  <Button onClick={() => {}} label="Create Bank" color={PrimaryOrange} />
                 </div>
               )}
             </Card>

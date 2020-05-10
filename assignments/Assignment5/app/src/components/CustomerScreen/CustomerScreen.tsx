@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card } from '../Card/Card';
-import { white, PrimaryLightest, PrimaryDarker, Primary } from '../../contants';
+import { white, PrimaryLightest, PrimaryDarker, Primary, PrimaryOrange } from '../../contants';
 import { InputField } from '../InputField/InputField';
 import { Button } from '../Button/Button';
 import { CustomerService } from '../../services/CustomerService';
@@ -12,7 +12,7 @@ import { BankService } from '../../services/BankService';
 interface ICustomerScreenProps {}
 interface ICustomerScreenState {
   isCreatingCustomer: boolean;
-  tableData: [];
+  tableData: JSX.Element[];
   name: string;
   bank: string;
   cpr: string;
@@ -27,7 +27,7 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
   constructor(props: Readonly<ICustomerScreenProps>) {
     super(props);
     this.state = {
-      wantedBank: '',
+      wantedBank: 'Choose a bank',
       name: '',
       wantedCpr: '',
       banks: [],
@@ -43,20 +43,42 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
   }
   private getData = async () => {
     Promise.all([bankService.getAll(), customerService.getAll()]).then(res => {
-      console.log(res);
+      const banks = res[0];
+      const customers = res[1];
+      this.setState({
+        banks: banks,
+        tableData: customers.map(customer => (
+          <tr>
+            <td>{customer.name}</td>
+            <td>{customer.cpr}</td>
+            <td>
+              {banks.map(v => {
+                if (v.cvr === customer.bank_cvr) {
+                  return v.name;
+                }
+              })}
+            </td>
+          </tr>
+        )),
+      });
     });
   };
-  private onChangeHandler = (e: React.InputHTMLAttributes<HTMLElement>) => {};
+  private onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget.name === 'name') this.setState({ name: e.currentTarget.value });
+    if (e.currentTarget.name === 'cpr') this.setState({ cpr: e.currentTarget.value });
+    if (e.currentTarget.name === 'wantedCpr') this.setState({ wantedCpr: e.currentTarget.value });
+  };
   private onCreateCustomer = () => {};
   private onDeleteBank = () => {};
 
   public render() {
+    console.log({ ...this.state });
     return (
       <div className="customerscreen-container">
         <h1 className="center-horizontal">Customer</h1>
         <div className="customerscreen-card-container center-horizontal">
           <div>
-            <Card title="Create a new Bank" backgroundColor={white} width={500}>
+            <Card title="Create a new Customer" backgroundColor={white} width={500}>
               {this.state.isCreatingCustomer && <div>IS LOADING</div>}
               {!this.state.isCreatingCustomer && (
                 <div className="customerscreen-form-container">
@@ -84,14 +106,14 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
                     <DropDown
                       width={120}
                       curved={true}
-                      label={this.state.wantedBank || 'Choose a bank'}
-                      elements={['123', '1231231']}
+                      label={this.state.wantedBank}
+                      elements={this.state.banks.map(bank => bank.name)}
                       onChange={cvr => {
                         this.setState({ wantedBank: cvr });
                       }}
                     />
                   </div>
-                  <Button onClick={() => this.onCreateCustomer()} label="Create Bank" color={PrimaryDarker} />
+                  <Button onClick={() => this.onCreateCustomer()} label="Create Customer" color={PrimaryOrange} />
                 </div>
               )}
             </Card>
@@ -109,9 +131,9 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
                     onChange={e => {
                       this.onChangeHandler(e);
                     }}
-                    placeholder="cvr of the bank"
+                    placeholder="cpr of the Customer"
                   />
-                  <Button onClick={() => this.onDeleteBank()} label="Delete Bank" color={PrimaryDarker} />
+                  <Button onClick={() => this.onDeleteBank()} label="Delete Customer" color={PrimaryOrange} />
                 </div>
               )}
             </Card>
@@ -123,7 +145,7 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
                   <thead style={{ backgroundColor: Primary }}>
                     <tr>
                       <th>Name</th>
-                      <th>Cvr</th>
+                      <th>Cpr</th>
                       <th>bank</th>
                     </tr>
                   </thead>

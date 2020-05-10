@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './Button.css';
+import { PrimaryOrange } from '../../contants';
 
 interface IButtonProps {
   onClick: () => void;
@@ -20,7 +21,7 @@ class Button extends React.Component<IButtonProps> {
         style={{
           ...this.props.style,
           width: this.props.width || undefined,
-          backgroundColor: this.props.color,
+          backgroundColor: this.props.color || PrimaryOrange,
         }}
         type="button"
         onClick={() => this.props.onClick()}
