@@ -10,6 +10,8 @@ route.post('/create', async (req, res, next) => {
   const bank_cvr = req.body.bank_cvr;
   const cpr = req.body.cpr;
 
+  if (name === '' || bank_cvr === '' || cpr === '') return res.sendStatus(401);
+
   try {
     await cm.insert({ cpr, name, bank_cvr } as ICustomer);
     return res.status(200).send(`Creation of customer with name ${name} has been successful`);

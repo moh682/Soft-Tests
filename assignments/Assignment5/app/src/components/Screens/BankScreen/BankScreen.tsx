@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card } from '../Card/Card';
+import { Card } from '../../Card/Card';
 import {
   white,
   PrimaryLightest,
@@ -8,13 +8,14 @@ import {
   PrimaryDarkest,
   Primary,
   PrimaryOrange,
-} from '../../contants';
-import { BankService } from '../../services/BankService';
-import { StorageService } from '../../services/StorageService';
-import { InputField } from '../InputField/InputField';
-import { Button } from '../Button/Button';
+} from '../../../contants';
+import { BankService } from '../../../services/BankService';
+import { StorageService } from '../../../services/StorageService';
+import { InputField } from '../../InputField/InputField';
+import { Button } from '../../Button/Button';
 
 import './BankScreen.css';
+import { Spinner } from '../../Spinner/Spinner';
 
 interface IBankProps {}
 
@@ -93,7 +94,11 @@ class BankScreen extends React.Component<IBankProps, IBankState> {
         <div className="bankscreen-card-container center-horizontal">
           <div>
             <Card title="Create a new Bank" backgroundColor={white} width={500}>
-              {this.state.isCreatingBank && <div>IS LOADING</div>}
+              {this.state.isCreatingBank && (
+                <div>
+                  <Spinner size={40} color={PrimaryOrange} />
+                </div>
+              )}
               {!this.state.isCreatingBank && (
                 <div className="bankscreen-form-container">
                   <InputField
@@ -123,7 +128,11 @@ class BankScreen extends React.Component<IBankProps, IBankState> {
           </div>
           <div>
             <Card title="Delete a Bank" backgroundColor={white} width={500}>
-              {this.state.isCreatingBank && <div>IS LOADING</div>}
+              {this.state.isCreatingBank && (
+                <div>
+                  <Spinner size={40} color={PrimaryOrange} />
+                </div>
+              )}
               {!this.state.isCreatingBank && (
                 <div className="bankscreen-form-container">
                   <InputField

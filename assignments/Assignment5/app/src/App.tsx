@@ -4,9 +4,10 @@ import { Login } from './components/LoginScreen/LoginScreen';
 import { StorageService } from './services/StorageService';
 import { Navigator } from './components/Navigator/Navigator';
 import { Background } from './components/Background/Background';
-import { HomeScreen } from './components/HomeScreen/HomeScreen';
-import { BankScreen } from './components/BankScreen/BankScreen';
-import { CustomerScreen } from './components/CustomerScreen/CustomerScreen';
+import { HomeScreen } from './components/Screens/HomeScreen/HomeScreen';
+import { BankScreen } from './components/Screens/BankScreen/BankScreen';
+import { AccountScreen } from './components/Screens/AccountScreen/AccountScreen';
+import { CustomerScreen } from './components/Screens/CustomerScreen/CustomerScreen';
 
 import './App.css';
 
@@ -65,7 +66,7 @@ class App extends React.Component<IAppProps, IAppState> {
                     <HomeScreen />
                   </Route>
                   <Route exact path="/Account">
-                    <HomeScreen />
+                    <AccountScreen />
                   </Route>
                   <Route exact path="/Customer">
                     <CustomerScreen />

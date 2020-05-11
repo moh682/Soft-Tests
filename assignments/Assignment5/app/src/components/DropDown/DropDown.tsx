@@ -22,15 +22,16 @@ class DropDown extends React.Component<IDropDownProps, IDropDownState> {
   };
   public render() {
     console.log({ ...this.state });
+    const label = this.props.elements.length !== 0 ? this.props.label : 'There are no banks available';
     return (
       <div className="dropdown">
         <Button
           isDisabled={this.props.isDisabled}
           onClick={() => {
-            this.setState({ isClicked: true });
+            this.setState({ isClicked: !this.state.isClicked });
           }}
           color={PrimaryLightest}
-          label={this.props.elements.length !== 0 ? this.props.label : 'There are no banks available'}
+          label={label}
           width={this.props.width}
           style={{
             borderRadius: this.props.curved ? '10px' : undefined,

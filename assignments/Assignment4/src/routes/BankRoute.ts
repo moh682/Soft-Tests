@@ -6,9 +6,10 @@ const route = express();
 const bm = new BankMapper();
 
 route.post('/create', async (req, res, next) => {
-  console.log(req.body);
   const cvr = req.body.cvr;
   const name = req.body.name;
+
+  if (name === '' || cvr === '') return res.sendStatus(401);
 
   try {
     await bm.insert({ cvr, name } as IBank);

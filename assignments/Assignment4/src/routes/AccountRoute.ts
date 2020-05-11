@@ -2,10 +2,12 @@ import express from 'express';
 import { AccountHandler } from '../logic/AccountHandler';
 import { AccountMapper } from '../database/AccountMapper';
 import { IAccount } from '../interfaces/IAccount';
+import { CustomerMapper } from '../database/CustomerMapper';
 const route = express();
 
 const ac = new AccountHandler();
 const am = new AccountMapper();
+const cm = new CustomerMapper();
 
 route.post('/transferAmountTo', async (req, res, next) => {
   const ownAccountNumber = req.body.ownAccountNumber;
@@ -24,10 +26,12 @@ route.post('/create', async (req, res, next) => {
   const number = req.body.number;
   const balance = req.body.balance;
   const customer_cpr = req.body.customer_cpr;
-  const bank_cvr = req.body.bank_cvr;
+
+  if (number === '' || balance === '' || customer_cpr === '') return res.sendStatus(401);
 
   try {
-    await am.insert({ number, balance, customer_cpr, bank_cvr } as IAccount);
+    const customer = await cm.getByNumber(customer_cpr);
+    await am.insert({ number, balance, customer_cpr, bank_cvr: customer.bank_cvr } as IAccount);
     return res.status(200).send(`Creation of account with number: ${number} has been successful`);
   } catch (error) {
     return res.status(500).send(error);

@@ -1,41 +1,25 @@
 import * as React from 'react';
-import { Card } from '../Card/Card';
-import { white, PrimaryLightest, PrimaryDarker, Primary, PrimaryOrange } from '../../contants';
-import { InputField } from '../InputField/InputField';
-import { Button } from '../Button/Button';
-import { CustomerService } from '../../services/CustomerService';
-import './CustomerScreen.css';
-import { DropDown } from '../DropDown/DropDown';
-import { IBank } from '../../interfaces/IBank';
-import { BankService } from '../../services/BankService';
+import { Card } from '../../Card/Card';
+import { white, PrimaryOrange, PrimaryLightest, Primary } from '../../../contants';
+import { Spinner } from '../../Spinner/Spinner';
+import { InputField } from '../../InputField/InputField';
+import { DropDown } from '../../DropDown/DropDown';
+import { Button } from '../../Button/Button';
+import { ICustomer } from '../../../interfaces/ICustomer';
+import { CustomerService } from '../../../services/CustomerService';
 
-interface ICustomerScreenProps {}
-interface ICustomerScreenState {
-  isCreatingCustomer: boolean;
-  tableData: JSX.Element[];
-  name: string;
-  bank: string;
-  cpr: string;
-  wantedCpr: string;
-  wantedBank: string;
-  banks: IBank[];
+interface IAccountScreenProps {}
+interface IAccountScreenState {
+  isCreatingAccount: boolean;
+  balance: number;
+  customers: ICustomer[];
 }
 
 const customerService = new CustomerService();
-const bankService = new BankService();
-class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScreenState> {
-  constructor(props: Readonly<ICustomerScreenProps>) {
+class AccountScreen extends React.Component<IAccountScreenProps, IAccountScreenState> {
+  constructor(props: Readonly<IAccountScreenProps>) {
     super(props);
-    this.state = {
-      wantedBank: 'Choose a bank',
-      name: '',
-      wantedCpr: '',
-      banks: [],
-      bank: '',
-      cpr: '',
-      tableData: [],
-      isCreatingCustomer: false,
-    };
+    this.state = {};
   }
 
   public async componentWillMount() {
@@ -47,8 +31,8 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
       const customers = res[1];
       this.setState({
         banks: banks,
-        tableData: customers.map(customer => (
-          <tr>
+        tableData: customers.map((customer, index) => (
+          <tr key={index}>
             <td>{customer.name}</td>
             <td>{customer.cpr}</td>
             <td>
@@ -68,18 +52,30 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
     if (e.currentTarget.name === 'cpr') this.setState({ cpr: e.currentTarget.value });
     if (e.currentTarget.name === 'wantedCpr') this.setState({ wantedCpr: e.currentTarget.value });
   };
-  private onCreateCustomer = () => {};
-  private onDeleteBank = () => {};
+  private onCreateCustomer = async () => {
+    this.setState({ isCreatingCustomer: true, name: '', cpr: '', wantedBank: 'Choose a bank' });
+    const { name, cpr, wantedBank } = this.state;
+    const bank = this.state.banks.filter(b => b.name === wantedBank)[0];
+    const isCreated = await customerService.create(name, cpr, bank.cvr);
+    if (!isCreated) alert('An error has occured');
+    this.setState({ isCreatingCustomer: true });
+  };
+  private onDeleteBank = async () => {
+    this.setState({ isDeletingCustomer: true });
+  };
 
   public render() {
-    console.log({ ...this.state });
     return (
       <div className="customerscreen-container">
         <h1 className="center-horizontal">Customer</h1>
         <div className="customerscreen-card-container center-horizontal">
           <div>
             <Card title="Create a new Customer" backgroundColor={white} width={500}>
-              {this.state.isCreatingCustomer && <div>IS LOADING</div>}
+              {this.state.isCreatingCustomer && (
+                <div>
+                  <Spinner size={40} color={PrimaryOrange} />
+                </div>
+              )}
               {!this.state.isCreatingCustomer && (
                 <div className="customerscreen-form-container">
                   <InputField
@@ -120,7 +116,11 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
           </div>
           <div>
             <Card title="Delete a Customer" backgroundColor={white} width={500}>
-              {this.state.isCreatingCustomer && <div>IS LOADING</div>}
+              {this.state.isCreatingCustomer && (
+                <div>
+                  <Spinner size={40} color={PrimaryOrange} />
+                </div>
+              )}
               {!this.state.isCreatingCustomer && (
                 <div className="customerscreen-form-container">
                   <InputField
@@ -154,10 +154,11 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
               </div>
             </Card>
           </div>
+          <div></div>
         </div>
       </div>
     );
   }
 }
 
-export { CustomerScreen };
+export { AccountScreen };

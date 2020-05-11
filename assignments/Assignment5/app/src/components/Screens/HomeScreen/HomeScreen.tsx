@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Card } from '../Card/Card';
-import { white, PrimaryLightest, PrimaryDarker, PrimaryOrange } from '../../contants';
-import { IMovement } from '../../interfaces/IMovement';
-import { MovementService } from '../../services/MovementService';
-import { InputField } from '../InputField/InputField';
-import { Button } from '../Button/Button';
+import { Card } from '../../Card/Card';
+import { white, PrimaryLightest, PrimaryDarker, PrimaryOrange } from '../../../contants';
+import { IMovement } from '../../../interfaces/IMovement';
+import { MovementService } from '../../../services/MovementService';
+import { InputField } from '../../InputField/InputField';
+import { Button } from '../../Button/Button';
 import './HomeScreen.css';
 
 interface IHomeProps {}

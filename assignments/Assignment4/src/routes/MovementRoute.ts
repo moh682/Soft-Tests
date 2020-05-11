@@ -8,6 +8,9 @@ const mm = new MovementMapper();
 route.post('/create', async (req: Request, res: Response) => {
   const { id, time, amount, accountFrom, accountTo } = req.body as IMovement;
 
+  if (time === '' || amount === undefined || accountFrom === undefined || accountTo === undefined)
+    return res.sendStatus(401);
+
   try {
     await mm.insert({ id, time, amount, accountFrom, accountTo } as IMovement);
     return res.status(200).send(`Creation of movement with id: ${id} has been successful`);
