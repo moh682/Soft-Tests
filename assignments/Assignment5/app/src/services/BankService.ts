@@ -13,7 +13,6 @@ class BankService implements BankService {
     const banks = await fetch(`${API}/bank/all`, {
       method: 'GET',
     }).then(response => response.json());
-    console.log(banks);
     return banks;
   };
   public create = async (cvr: string, name: string): Promise<boolean> => {

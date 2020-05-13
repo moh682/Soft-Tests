@@ -87,7 +87,7 @@ export class AccountMapper implements IMapper<IAccount> {
   deleteByNumer(number: number): Promise<void> {
     return new Promise(async (resolve, reject) => {
       const connection = await DBConnector.getConnection();
-      connection.query({ sql: 'DELETE FROM accounts WHERE number = ? ', values: [number] }, error => {
+      connection.query({ sql: 'DELETE FROM accounts WHERE number=? ', values: [number] }, error => {
         connection.release();
         if (error) {
           reject(error);
@@ -104,8 +104,9 @@ export class AccountMapper implements IMapper<IAccount> {
         connection.release();
         if (error) {
           reject(error);
+        } else {
+          resolve();
         }
-        resolve();
       });
     });
   }

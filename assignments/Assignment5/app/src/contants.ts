@@ -7,3 +7,4 @@ export const PrimaryDarkest: string = '#003038';
 export const PrimaryOrange: string = '#FF8A43';
 export const white: string = '#fff';
 export const black: string = '#000';
+export const strings = {};

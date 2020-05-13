@@ -8,76 +8,100 @@ import { Button } from '../../Button/Button';
 import { ICustomer } from '../../../interfaces/ICustomer';
 import { CustomerService } from '../../../services/CustomerService';
 
+import './AccountScreen.css';
+import { AccountService } from '../../../services/AccountService';
+
 interface IAccountScreenProps {}
 interface IAccountScreenState {
   isCreatingAccount: boolean;
   balance: number;
   customers: ICustomer[];
+  choosenCustomer: string;
+  wantedAccount: number;
+  tableData: JSX.Element[];
+  name: string;
+  customer_cpr: string;
+  accountNumber: string;
+  isDeletingAccount: boolean;
 }
 
+const accountService = new AccountService();
 const customerService = new CustomerService();
 class AccountScreen extends React.Component<IAccountScreenProps, IAccountScreenState> {
   constructor(props: Readonly<IAccountScreenProps>) {
     super(props);
-    this.state = {};
+    this.state = {
+      balance: 0,
+      choosenCustomer: '',
+      wantedAccount: 0,
+      customers: [],
+      isCreatingAccount: false,
+      tableData: [],
+      name: '',
+      customer_cpr: '',
+      isDeletingAccount: false,
+      accountNumber: '',
+    };
   }
 
   public async componentWillMount() {
     await this.getData();
   }
   private getData = async () => {
-    Promise.all([bankService.getAll(), customerService.getAll()]).then(res => {
-      const banks = res[0];
-      const customers = res[1];
-      this.setState({
-        banks: banks,
-        tableData: customers.map((customer, index) => (
+    const accounts = await accountService.getAll();
+    const customers = await customerService.getAll();
+
+    this.setState({
+      customers,
+      tableData: accounts.map((account, index) => {
+        return (
           <tr key={index}>
-            <td>{customer.name}</td>
-            <td>{customer.cpr}</td>
-            <td>
-              {banks.map(v => {
-                if (v.cvr === customer.bank_cvr) {
-                  return v.name;
-                }
-              })}
-            </td>
+            <td>{account.number}</td>
+            <td>{account.customer_cpr}</td>
+            <td>{account.balance}</td>
           </tr>
-        )),
-      });
+        );
+      }),
     });
   };
   private onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.currentTarget.name === 'name') this.setState({ name: e.currentTarget.value });
-    if (e.currentTarget.name === 'cpr') this.setState({ cpr: e.currentTarget.value });
-    if (e.currentTarget.name === 'wantedCpr') this.setState({ wantedCpr: e.currentTarget.value });
+    if (e.target.name === 'balance') return this.setState({ balance: e.target.value as any });
+    if (e.target.name === 'name') return this.setState({ name: e.target.value });
+    if (e.target.name === 'accountNumber') return this.setState({ accountNumber: e.target.value as any });
   };
-  private onCreateCustomer = async () => {
-    this.setState({ isCreatingCustomer: true, name: '', cpr: '', wantedBank: 'Choose a bank' });
-    const { name, cpr, wantedBank } = this.state;
-    const bank = this.state.banks.filter(b => b.name === wantedBank)[0];
-    const isCreated = await customerService.create(name, cpr, bank.cvr);
-    if (!isCreated) alert('An error has occured');
-    this.setState({ isCreatingCustomer: true });
+  private onCreateAccount = async () => {
+    const { balance, choosenCustomer, name } = this.state;
+
+    const customer = this.state.customers.filter(customer => customer.name === choosenCustomer)[0]?.cpr;
+    if (!customer) return alert('enter a valid customer');
+    const isCreated = await accountService.create(name, balance, customer as any);
+    if (!isCreated) alert('An Error has occured');
+    await this.getData();
+    this.setState({ name: '', balance: 0, choosenCustomer: undefined as any });
   };
-  private onDeleteBank = async () => {
-    this.setState({ isDeletingCustomer: true });
+  private onDeleteAccount = async () => {
+    this.setState({ isDeletingAccount: true });
+    const isDeleted = await accountService.delete(this.state.accountNumber);
+    this.setState({ accountNumber: '' });
+    if (!isDeleted) alert('Something went wrong ');
+    await this.getData();
+    this.setState({ isDeletingAccount: false });
   };
 
   public render() {
     return (
-      <div className="customerscreen-container">
-        <h1 className="center-horizontal">Customer</h1>
-        <div className="customerscreen-card-container center-horizontal">
+      <div className="accountscreen-container">
+        <h1 className="center-horizontal">Accounts</h1>
+        <div className="accountscreen-card-container center-horizontal">
           <div>
-            <Card title="Create a new Customer" backgroundColor={white} width={500}>
-              {this.state.isCreatingCustomer && (
+            <Card title="Create a new Account" backgroundColor={white} width={500}>
+              {this.state.isCreatingAccount && (
                 <div>
                   <Spinner size={40} color={PrimaryOrange} />
                 </div>
               )}
-              {!this.state.isCreatingCustomer && (
-                <div className="customerscreen-form-container">
+              {!this.state.isCreatingAccount && (
+                <div className="accountscreen-form-container">
                   <InputField
                     name="name"
                     inputFieldColor={PrimaryLightest}
@@ -89,64 +113,67 @@ class AccountScreen extends React.Component<IAccountScreenProps, IAccountScreenS
                     placeholder="name"
                   />
                   <InputField
-                    name="cpr"
+                    name="balance"
                     curved={true}
-                    value={this.state.cpr}
+                    isNumbers={true}
+                    value={this.state.balance}
                     onChange={e => {
                       this.onChangeHandler(e);
                     }}
                     inputFieldColor={PrimaryLightest}
-                    placeholder="cpr"
+                    placeholder="Customer Cpr"
                   />
                   <div style={{ marginTop: '5px' }}>
                     <DropDown
+                      value={this.state.choosenCustomer}
                       width={120}
                       curved={true}
-                      label={this.state.wantedBank}
-                      elements={this.state.banks.map(bank => bank.name)}
-                      onChange={cvr => {
-                        this.setState({ wantedBank: cvr });
+                      label={'Choose a customer'}
+                      elements={this.state.customers.map(customer => customer.name)}
+                      onChange={customer => {
+                        this.setState({ choosenCustomer: customer });
                       }}
                     />
                   </div>
-                  <Button onClick={() => this.onCreateCustomer()} label="Create Customer" color={PrimaryOrange} />
+                  <Button onClick={() => this.onCreateAccount()} label="Create Account" color={PrimaryOrange} />
                 </div>
               )}
             </Card>
           </div>
           <div>
-            <Card title="Delete a Customer" backgroundColor={white} width={500}>
-              {this.state.isCreatingCustomer && (
+            <Card title="Delete a Account" backgroundColor={white} width={500}>
+              {this.state.isDeletingAccount && (
                 <div>
                   <Spinner size={40} color={PrimaryOrange} />
                 </div>
               )}
-              {!this.state.isCreatingCustomer && (
-                <div className="customerscreen-form-container">
+              {!this.state.isDeletingAccount && (
+                <div className="accountscreen-form-container">
                   <InputField
-                    name="wantedCpr"
+                    name="accountNumber"
                     inputFieldColor={PrimaryLightest}
                     curved={true}
-                    value={this.state.wantedCpr}
+                    isNumbers={true}
+                    value={this.state.accountNumber}
                     onChange={e => {
                       this.onChangeHandler(e);
                     }}
-                    placeholder="cpr of the Customer"
+                    placeholder="Number of the Account"
                   />
-                  <Button onClick={() => this.onDeleteBank()} label="Delete Customer" color={PrimaryOrange} />
+                  <Button onClick={() => this.onDeleteAccount()} label="Delete Account" color={PrimaryOrange} />
                 </div>
               )}
             </Card>
           </div>
           <div>
-            <Card title="All Customers" backgroundColor={white} width={500}>
+            <Card title="All Accounts" backgroundColor={white} width={500}>
               <div className="table-container">
                 <table>
                   <thead style={{ backgroundColor: Primary }}>
                     <tr>
-                      <th>Name</th>
-                      <th>Cpr</th>
-                      <th>bank</th>
+                      <th>Number</th>
+                      <th>Customer_Cpr</th>
+                      <th>Balance</th>
                     </tr>
                   </thead>
                   <tbody>{this.state.tableData}</tbody>

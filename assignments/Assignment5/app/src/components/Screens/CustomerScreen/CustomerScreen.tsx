@@ -84,7 +84,6 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
   };
 
   public render() {
-    console.log({ ...this.state });
     return (
       <div className="customerscreen-container">
         <h1 className="center-horizontal">Customer</h1>
@@ -122,7 +121,8 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
                     <DropDown
                       width={120}
                       curved={true}
-                      label={this.state.wantedBank}
+                      value={this.state.wantedBank}
+                      label={'Choose a bank'}
                       elements={this.state.banks.map(bank => bank.name)}
                       onChange={cvr => {
                         this.setState({ wantedBank: cvr });

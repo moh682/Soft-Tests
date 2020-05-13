@@ -34,7 +34,7 @@ class Navigator extends React.Component<INavigatorProps> {
               </Link>
             </li>
             <li>
-              <Link to="/Movements" className="navigator-route">
+              <Link to="/Movement" className="navigator-route">
                 Movement
               </Link>
             </li>

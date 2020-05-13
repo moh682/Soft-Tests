@@ -8,9 +8,11 @@ interface IDropDownProps {
   elements: any[];
   backgroundColor?: string;
   label: string;
+  value: any;
   curved?: boolean;
   width?: number;
   isDisabled?: boolean;
+  valueWhenEmpty?: string;
 }
 interface IDropDownState {
   isClicked: boolean;
@@ -21,42 +23,44 @@ class DropDown extends React.Component<IDropDownProps, IDropDownState> {
     isClicked: false,
   };
   public render() {
-    console.log({ ...this.state });
-    const label = this.props.elements.length !== 0 ? this.props.label : 'There are no banks available';
+    const value = this.props.elements.length !== 0 ? this.props.value : 'Empty';
     return (
-      <div className="dropdown">
-        <Button
-          isDisabled={this.props.isDisabled}
-          onClick={() => {
-            this.setState({ isClicked: !this.state.isClicked });
-          }}
-          color={PrimaryLightest}
-          label={label}
-          width={this.props.width}
-          style={{
-            borderRadius: this.props.curved ? '10px' : undefined,
-            backgroundColor: this.props.backgroundColor || PrimaryDarker,
-          }}
-          className="dropbtn"
-        />
-        {this.state.isClicked && (
-          <div className="dropdown-content" style={{ backgroundColor: this.props.backgroundColor || '#fff' }}>
-            {this.props.elements.map((value, index) => {
-              return (
-                <span
-                  className="dropdown-element"
-                  onClick={e => {
-                    this.props.onChange(e.currentTarget.innerHTML);
-                    this.setState({ isClicked: false });
-                  }}
-                  key={index}
-                >
-                  {value}
-                </span>
-              );
-            })}
-          </div>
-        )}
+      <div>
+        {this.props.label}
+        <div className="dropdown">
+          <Button
+            isDisabled={this.props.isDisabled || this.props.elements.length === 0}
+            onClick={() => {
+              this.setState({ isClicked: !this.state.isClicked });
+            }}
+            color={PrimaryLightest}
+            label={value || 'choose a value'}
+            width={this.props.width}
+            style={{
+              borderRadius: this.props.curved ? '10px' : undefined,
+              backgroundColor: this.props.backgroundColor || PrimaryDarker,
+            }}
+            className="dropbtn"
+          />
+          {this.state.isClicked && (
+            <div className="dropdown-content" style={{ backgroundColor: this.props.backgroundColor || '#fff' }}>
+              {this.props.elements.map((value, index) => {
+                return (
+                  <span
+                    className="dropdown-element"
+                    onClick={e => {
+                      this.props.onChange(e.currentTarget.innerHTML);
+                      this.setState({ isClicked: false });
+                    }}
+                    key={index}
+                  >
+                    {value}
+                  </span>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

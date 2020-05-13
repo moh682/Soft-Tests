@@ -1,21 +1,27 @@
 import * as React from 'react';
 import { Card } from '../../Card/Card';
-import { white, PrimaryLightest, PrimaryDarker, PrimaryOrange } from '../../../contants';
+import { white, PrimaryLightest, PrimaryOrange } from '../../../contants';
 import { IMovement } from '../../../interfaces/IMovement';
 import { MovementService } from '../../../services/MovementService';
 import { InputField } from '../../InputField/InputField';
 import { Button } from '../../Button/Button';
-import './HomeScreen.css';
+import { Spinner } from '../../Spinner/Spinner';
+import { AccountService } from '../../../services/AccountService';
 
+import './HomeScreen.css';
 interface IHomeProps {}
 
 interface IHomeState {
   movements: IMovement[];
   tableData: JSX.Element[];
   isTransfering: boolean;
+  current: number | undefined;
+  target: number | undefined;
+  balance: number | undefined;
 }
 
 const movementService = new MovementService();
+const accountService = new AccountService();
 
 export class HomeScreen extends React.Component<IHomeProps, IHomeState> {
   public constructor(props: Readonly<IHomeProps>) {
@@ -24,12 +30,18 @@ export class HomeScreen extends React.Component<IHomeProps, IHomeState> {
       movements: [],
       tableData: [],
       isTransfering: false,
+      current: undefined,
+      target: undefined,
+      balance: undefined,
     };
   }
 
   public async componentWillMount() {
+    this.getData();
+  }
+
+  getData = async () => {
     const movements = await movementService.getAll();
-    console.log(movements);
     const tableData = movements.map((movement, index) => {
       return (
         <tr key={`movement${index}`}>
@@ -43,7 +55,18 @@ export class HomeScreen extends React.Component<IHomeProps, IHomeState> {
     this.setState({
       tableData,
     });
-  }
+  };
+
+  onMakeTransaction = async () => {
+    this.setState({ isTransfering: true });
+    const { balance, current, target } = this.state;
+
+    const isTransfered = await accountService.transfer(current as number, target as number, balance as number);
+    if (!isTransfered) alert('An Error Has Occured');
+
+    this.getData();
+    this.setState({ isTransfering: false });
+  };
 
   public render(): JSX.Element {
     return (
@@ -53,26 +76,53 @@ export class HomeScreen extends React.Component<IHomeProps, IHomeState> {
         <div className="homescreen-card-container center-horizontal">
           <div>
             <Card title="Make a transaction" backgroundColor={white} width={500}>
-              {this.state.isTransfering && <div>IS LOADING</div>}
+              {this.state.isTransfering && (
+                <div>
+                  <Spinner />
+                </div>
+              )}
               {!this.state.isTransfering && (
                 <div className="homescreen-form-container">
                   <InputField
-                    name="account"
+                    name="current"
                     inputFieldColor={PrimaryLightest}
                     curved={true}
-                    value={'name'}
-                    onChange={e => {}}
-                    placeholder="name"
+                    value={this.state.current as any}
+                    isNumbers={true}
+                    onChange={e => {
+                      this.setState({ current: e.target.value as any });
+                    }}
+                    placeholder="Current Account"
                   />
                   <InputField
-                    name="name"
+                    name="target"
                     inputFieldColor={PrimaryLightest}
                     curved={true}
-                    value={'name'}
-                    onChange={e => {}}
-                    placeholder="name"
+                    value={this.state.target as any}
+                    isNumbers={true}
+                    onChange={e => {
+                      this.setState({ target: e.target.value as any });
+                    }}
+                    placeholder="Target Account"
                   />
-                  <Button onClick={() => {}} label="Create Bank" color={PrimaryOrange} />
+                  <InputField
+                    name="amount"
+                    inputFieldColor={PrimaryLightest}
+                    curved={true}
+                    value={this.state.balance as any}
+                    isNumbers={true}
+                    onChange={e => {
+                      this.setState({ balance: e.target.value as any });
+                    }}
+                    placeholder="Amount"
+                  />
+                  <Button
+                    onClick={() => {
+                      this.onMakeTransaction();
+                    }}
+                    label="Trasfer Money"
+                    color={PrimaryOrange}
+                  />
                 </div>
               )}
             </Card>

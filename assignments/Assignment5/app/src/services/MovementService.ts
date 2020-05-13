@@ -9,6 +9,17 @@ class MovementService {
       return response.json();
     });
   };
+  delete = async (number: number): Promise<Boolean> => {
+    return await fetch(`${API}/movement/delete`, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'Application/json',
+      },
+      body: JSON.stringify({ id: number }),
+    }).then(response => {
+      return response.status === 200;
+    });
+  };
 }
 
 export { MovementService };

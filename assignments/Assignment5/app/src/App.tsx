@@ -8,6 +8,7 @@ import { HomeScreen } from './components/Screens/HomeScreen/HomeScreen';
 import { BankScreen } from './components/Screens/BankScreen/BankScreen';
 import { AccountScreen } from './components/Screens/AccountScreen/AccountScreen';
 import { CustomerScreen } from './components/Screens/CustomerScreen/CustomerScreen';
+import { MovementScreen } from './components/Screens/MovementScreen/MovementScreen';
 
 import './App.css';
 
@@ -24,7 +25,6 @@ class App extends React.Component<IAppProps, IAppState> {
   constructor(props: Readonly<IAppProps>) {
     super(props);
     const name = storageService.getNameToken();
-    console.log(name);
     this.state = {
       isLoading: false,
       isLoggedIn: name !== null || false,
@@ -65,17 +65,17 @@ class App extends React.Component<IAppProps, IAppState> {
                   <Route exact path="/">
                     <HomeScreen />
                   </Route>
-                  <Route exact path="/Account">
+                  <Route path="/Account">
                     <AccountScreen />
                   </Route>
-                  <Route exact path="/Customer">
+                  <Route path="/Customer">
                     <CustomerScreen />
                   </Route>
-                  <Route exact path="/Bank">
+                  <Route path="/Bank">
                     <BankScreen />
                   </Route>
-                  <Route exact path="/Movement">
-                    <HomeScreen />
+                  <Route path="/Movement">
+                    <MovementScreen />
                   </Route>
                 </Switch>
               )}

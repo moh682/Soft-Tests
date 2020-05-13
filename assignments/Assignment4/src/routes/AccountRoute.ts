@@ -49,11 +49,21 @@ route.get('/find', async (req, res, next) => {
   }
 });
 
+route.get('/all', async (req, res, next) => {
+  try {
+    const foundAccount = await am.getAll();
+    return res.send(foundAccount);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+
 route.delete('/delete', async (req, res, next) => {
   const number = req.body.number;
-
+  console.log(number);
   try {
     const deletedAccount = await am.deleteByNumer(number);
+    console.log('deleted');
     return res.status(200).send(`Deletion of movement with number: ${number} has been successful`);
   } catch (error) {
     return res.status(500).send(error);
