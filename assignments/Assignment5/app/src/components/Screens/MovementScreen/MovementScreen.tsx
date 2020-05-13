@@ -54,7 +54,7 @@ class MovementScreen extends React.Component<IMovementScreenProps, IMovementScre
     this.setState({ isDeletingMovement: true });
     const { number } = this.state;
     const isDeleted = await movementService.delete(number as number);
-    if (!isDeleted) alert('An Error Occured');
+    if (!isDeleted) console.log('An Error Occured');
     await this.getData();
     this.setState({ isDeletingMovement: false, number: undefined });
   };

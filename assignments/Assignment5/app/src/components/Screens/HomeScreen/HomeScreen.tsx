@@ -62,7 +62,7 @@ export class HomeScreen extends React.Component<IHomeProps, IHomeState> {
     const { balance, current, target } = this.state;
 
     const isTransfered = await accountService.transfer(current as number, target as number, balance as number);
-    if (!isTransfered) alert('An Error Has Occured');
+    if (!isTransfered) console.log('An Error Has Occured');
 
     this.getData();
     this.setState({ isTransfering: false });

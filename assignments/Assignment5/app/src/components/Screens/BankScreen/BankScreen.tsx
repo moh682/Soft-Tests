@@ -71,7 +71,7 @@ class BankScreen extends React.Component<IBankProps, IBankState> {
   private onDeleteBank = async () => {
     this.setState({ isDeletingBank: true, wantedCvr: '' });
     const isDeleted = await bankService.delete(this.state.wantedCvr);
-    if (!isDeleted) alert('An error occured');
+    if (!isDeleted) console.log('An error occured');
     await this.getData();
     this.setState({ isDeletingBank: false });
   };
@@ -82,7 +82,7 @@ class BankScreen extends React.Component<IBankProps, IBankState> {
     if (isCreated) {
       await this.getData();
     } else {
-      alert('An error has occured');
+      console.log('An error has occured');
     }
     this.setState({ isCreatingBank: false });
   };

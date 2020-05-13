@@ -33,7 +33,7 @@ class App extends React.Component<IAppProps, IAppState> {
   }
 
   onLogin = (str: string) => {
-    if (!str || str === '') return alert('You must enter a name');
+    if (!str || str === '') return console.log('You must enter a name');
     if (str === 'admin') {
       this.setState({ isLoading: false, isLoggedIn: true, name: 'admin' });
       storageService.setNameToken(str);

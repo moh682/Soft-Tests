@@ -73,9 +73,9 @@ class AccountScreen extends React.Component<IAccountScreenProps, IAccountScreenS
     const { balance, choosenCustomer, name } = this.state;
 
     const customer = this.state.customers.filter(customer => customer.name === choosenCustomer)[0]?.cpr;
-    if (!customer) return alert('enter a valid customer');
+    if (!customer) return console.log('enter a valid customer');
     const isCreated = await accountService.create(name, balance, customer as any);
-    if (!isCreated) alert('An Error has occured');
+    if (!isCreated) console.log('An Error has occured');
     await this.getData();
     this.setState({ name: '', balance: 0, choosenCustomer: undefined as any });
   };
@@ -83,7 +83,7 @@ class AccountScreen extends React.Component<IAccountScreenProps, IAccountScreenS
     this.setState({ isDeletingAccount: true });
     const isDeleted = await accountService.delete(this.state.accountNumber);
     this.setState({ accountNumber: '' });
-    if (!isDeleted) alert('Something went wrong ');
+    if (!isDeleted) console.log('Something went wrong ');
     await this.getData();
     this.setState({ isDeletingAccount: false });
   };
