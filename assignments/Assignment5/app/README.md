@@ -1,5 +1,28 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Assignment 5
+
+We are using Selenium IDE to test our frontend.
+
+Our aim is the test the frontend for crashes and visual issues, that could occur after errors.
+
+## Tests Excerpt
+Here are some of our tests, we didn't wanna flood the markdown ;)
+If you wanna try it out, find the project file here:
+[Selenium IDE project file](TestSoft2020.side)
+
+### Create Account
+![Create Account](imgs/CreateAccount.png)
+### Delete Account
+![Delete Account](imgs/DeleteAccount.png)
+### Delete non-existing Account
+![Delete non-existing Account](imgs/DeleteNonAccount.png)
+
+### Login, Browse, Logout
+![Login Browse Logout](imgs/LoginBrowseLogout.png)
+
+---
+
 ## Available Scripts
 
 In the project directory, you can run:

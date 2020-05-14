@@ -76,7 +76,7 @@ class CustomerScreen extends React.Component<ICustomerScreenProps, ICustomerScre
     const { name, cpr, wantedBank } = this.state;
     const bank = this.state.banks.filter(b => b.name === wantedBank)[0];
     const isCreated = await customerService.create(name, cpr, bank.cvr);
-    if (!isCreated) alert('An error has occured');
+    if (!isCreated) console.log('An error has occured');
     this.setState({ isCreatingCustomer: true });
   };
   private onDeleteBank = async () => {

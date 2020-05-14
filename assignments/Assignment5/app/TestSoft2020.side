@@ -1,0 +1,760 @@
+{
+  "id": "0ce05638-f7a5-4b81-8ea5-a953338fb6b4",
+  "version": "2.0",
+  "name": "TestSoft2020",
+  "url": "http://localhost:3000/Account",
+  "tests": [{
+    "id": "2229502f-3067-43e6-bf88-aad91a11f9f0",
+    "name": "Login, browse tabs, logout",
+    "commands": [{
+      "id": "fb105dea-9590-4304-b7c9-1a761d5b7709",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "38ad93d6-0ccf-40d3-b74c-9a0974e5c2f2",
+      "comment": "",
+      "command": "click",
+      "target": "name=cpr",
+      "targets": [
+        ["name=cpr", "name"],
+        ["css=.input-field", "css:finder"],
+        ["xpath=//input[@name='cpr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "33627c44-a28c-45a5-8f90-ebbf427ef940",
+      "comment": "",
+      "command": "type",
+      "target": "name=cpr",
+      "targets": [
+        ["name=cpr", "name"],
+        ["css=.input-field", "css:finder"],
+        ["xpath=//input[@name='cpr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "551afb28-0d32-4f2e-8283-6070763bc130",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ccd072ff-df84-4520-8e49-18467f8a1e2a",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.button",
+      "targets": [
+        ["css=.button", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a67bf085-1602-4332-9229-7b3aee9a6d82",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=li:nth-child(1) > .navigator-route", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='app']/span/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2bd5c6bb-d199-4bb9-a028-b013f4f6c9dc",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Account",
+      "targets": [
+        ["linkText=Account", "linkText"],
+        ["css=li:nth-child(2) > .navigator-route", "css:finder"],
+        ["xpath=//a[contains(text(),'Account')]", "xpath:link"],
+        ["xpath=//div[@id='app']/span/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Account')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b0147ec-d04b-4f88-b9a0-4b24728e7984",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Account",
+      "targets": [
+        ["linkText=Account", "linkText"],
+        ["css=li:nth-child(2) > .navigator-route", "css:finder"],
+        ["xpath=//a[contains(text(),'Account')]", "xpath:link"],
+        ["xpath=//div[@id='app']/span/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Account')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "441ec23c-601c-4c92-b06b-26e68c543115",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Account",
+      "targets": [
+        ["linkText=Account", "linkText"],
+        ["css=li:nth-child(2) > .navigator-route", "css:finder"],
+        ["xpath=//a[contains(text(),'Account')]", "xpath:link"],
+        ["xpath=//div[@id='app']/span/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Account')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f9e66f5-3780-4f8c-bdeb-28319af64292",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Customer",
+      "targets": [
+        ["linkText=Customer", "linkText"],
+        ["css=li:nth-child(3) > .navigator-route", "css:finder"],
+        ["xpath=//a[contains(text(),'Customer')]", "xpath:link"],
+        ["xpath=//div[@id='app']/span/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Customer')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Customer')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "68690d7b-98f3-4888-9f73-373e1922cac3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Bank",
+      "targets": [
+        ["linkText=Bank", "linkText"],
+        ["css=li:nth-child(4) > .navigator-route", "css:finder"],
+        ["xpath=//a[contains(text(),'Bank')]", "xpath:link"],
+        ["xpath=//div[@id='app']/span/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Bank')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Bank')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb44aa74-f120-49c0-89df-c007de11fc36",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Movement",
+      "targets": [
+        ["linkText=Movement", "linkText"],
+        ["css=li:nth-child(5) > .navigator-route", "css:finder"],
+        ["xpath=//a[contains(text(),'Movement')]", "xpath:link"],
+        ["xpath=//div[@id='app']/span/div/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Movement')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Movement')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "24d59b40-3ce5-4108-8188-1b237cc64527",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(6) > .navigator-route",
+      "targets": [
+        ["css=li:nth-child(6) > .navigator-route", "css:finder"],
+        ["xpath=//div[@id='app']/span/div/ul/li[6]/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e4a81ce9-ced6-4ee0-8796-31bdf6722f37",
+    "name": "Create Bank",
+    "commands": [{
+      "id": "8bc70540-34c4-448f-b599-b0ba83e15dd9",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Bank",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "25746e5f-3353-436e-a69a-5e633847e528",
+      "comment": "",
+      "command": "click",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ab20b691-daa4-4156-b07a-1c485e238fda",
+      "comment": "",
+      "command": "type",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "BankersDream"
+    }, {
+      "id": "05de4f07-d6a3-412b-9d2a-2ca74b0b44e9",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvr",
+      "targets": [
+        ["name=cvr", "name"],
+        ["css=.InputField:nth-child(2) > .input-field", "css:finder"],
+        ["xpath=//input[@name='cvr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6aed0919-67c4-4d57-9ed1-b2fd9dcdb6e4",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvr",
+      "targets": [
+        ["name=cvr", "name"],
+        ["css=.InputField:nth-child(2) > .input-field", "css:finder"],
+        ["xpath=//input[@name='cvr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "8989"
+    }, {
+      "id": "b3281fee-c51b-4398-8664-0dc4eabdc657",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(3)",
+      "targets": [
+        ["css=.button:nth-child(3)", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Create Bank')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "57f346a5-a237-4f95-a271-3dfcfecd6a66",
+    "name": "Create Customer (fail)",
+    "commands": [{
+      "id": "ccf1ab6b-d5d7-4fa5-9a34-35bc0c16da70",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Customer",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c5e96569-cd77-4da4-bb85-721cea3342ff",
+      "comment": "",
+      "command": "click",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b925cae-2d7c-40d3-8f96-9eb72c5257d1",
+      "comment": "",
+      "command": "type",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Hans Hansen"
+    }, {
+      "id": "8c2d122f-8be8-4568-a35e-fedaef72b141",
+      "comment": "",
+      "command": "click",
+      "target": "name=cpr",
+      "targets": [
+        ["name=cpr", "name"],
+        ["css=.InputField:nth-child(2) > .input-field", "css:finder"],
+        ["xpath=//input[@name='cpr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db4583fd-7db5-4eb6-b9f8-345b144c740d",
+      "comment": "",
+      "command": "type",
+      "target": "name=cpr",
+      "targets": [
+        ["name=cpr", "name"],
+        ["css=.InputField:nth-child(2) > .input-field", "css:finder"],
+        ["xpath=//input[@name='cpr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "3421"
+    }, {
+      "id": "25c55121-5fbb-48a5-a6c6-40a0a8eeba2b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dropbtn",
+      "targets": [
+        ["css=.dropbtn", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[3]/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Choose a bank')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "14d1bfe6-9098-4ba1-b682-f0ec444229c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dropdown-element:nth-child(3)",
+      "targets": [
+        ["css=.dropdown-element:nth-child(5)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[3]/div/div/div/span[5]", "xpath:idRelative"],
+        ["xpath=//span[5]", "xpath:position"],
+        ["xpath=//span[contains(.,'BankersDream')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "17485827-027d-478f-8f73-299a5ac6639a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(4)",
+      "targets": [
+        ["css=.button:nth-child(4)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Create Customer')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d9436fc-57c8-486c-a048-af156e43f800",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > .card-container #loader-1",
+      "targets": [
+        ["css=div:nth-child(2) > .card-container #loader-1", "css:finder"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "44ddbb4d-a87a-42a0-94cc-c9da9f509700",
+    "name": "Delete non-existing bank",
+    "commands": [{
+      "id": "af450355-40b3-4b08-afb8-01d71a1a6ca0",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Bank",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7066c4cf-76f9-4817-8fde-8e4a5b6f4250",
+      "comment": "",
+      "command": "click",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0e1ca9a-deea-4917-acf3-12d604b44d1a",
+      "comment": "",
+      "command": "type",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "testbank"
+    }, {
+      "id": "225f8d10-534a-416f-a3a0-af600edc3f43",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvr",
+      "targets": [
+        ["name=cvr", "name"],
+        ["css=.InputField:nth-child(2) > .input-field", "css:finder"],
+        ["xpath=//input[@name='cvr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "1234"
+    }, {
+      "id": "0f1d34ae-5b51-49a9-a940-fbfa5cc4e5a9",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .card-container .InputField:nth-child(1)",
+      "targets": [
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div/div/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c94bb653-cd12-46c5-92df-d5fd141bc25a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(3)",
+      "targets": [
+        ["css=.button:nth-child(3)", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Create Bank')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "af09b14a-5a1c-4740-8207-51ba2fa5f848",
+      "comment": "",
+      "command": "click",
+      "target": "name=wantedCvr",
+      "targets": [
+        ["name=wantedCvr", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='wantedCvr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3e8df58d-4713-4ba4-a0f4-4046c9464355",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(2)",
+      "targets": [
+        ["css=.button:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Delete Bank')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "453fddb4-6fde-407d-ac1f-dd65ef16b6b1",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(2) > .card-container",
+      "targets": [
+        ["css=div:nth-child(2) > .card-container", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "81a9a7cb-c40c-4175-8b24-70a0a876afa9",
+      "comment": "",
+      "command": "click",
+      "target": "name=wantedCvr",
+      "targets": [
+        ["name=wantedCvr", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='wantedCvr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "950e0c79-86a5-4914-8626-592f005bda44",
+      "comment": "",
+      "command": "type",
+      "target": "name=wantedCvr",
+      "targets": [
+        ["name=wantedCvr", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='wantedCvr']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "91c6855c-6215-465c-9292-2dbf0e28921a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(2)",
+      "targets": [
+        ["css=.button:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Delete Bank')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f03a31b0-f7cd-4630-acdb-2ebc7943d526",
+    "name": "Create Account",
+    "commands": [{
+      "id": "369bd2a2-ba18-468c-b106-2dba6b7a97bb",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Account",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6c3d6d18-7c80-447b-9fde-81531aae748e",
+      "comment": "",
+      "command": "click",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4895d98e-acc7-47cc-9f93-934d2ea1890b",
+      "comment": "",
+      "command": "type",
+      "target": "name=name",
+      "targets": [
+        ["name=name", "name"],
+        ["css=div:nth-child(1) > .card-container .InputField:nth-child(1) > .input-field", "css:finder"],
+        ["xpath=//input[@name='name']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "new1"
+    }, {
+      "id": "606263d1-20b7-482a-b810-1f0eb6854a36",
+      "comment": "",
+      "command": "click",
+      "target": "name=balance",
+      "targets": [
+        ["name=balance", "name"],
+        ["css=.InputField:nth-child(2) > .input-field", "css:finder"],
+        ["xpath=//input[@name='balance']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9303364f-ba27-4f21-8af0-1fe6dff33e5c",
+      "comment": "",
+      "command": "type",
+      "target": "name=balance",
+      "targets": [
+        ["name=balance", "name"],
+        ["css=.InputField:nth-child(2) > .input-field", "css:finder"],
+        ["xpath=//input[@name='balance']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "2000"
+    }, {
+      "id": "d896e6c4-b90d-4ad0-aeb4-73dc33032540",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dropbtn",
+      "targets": [
+        ["css=.dropbtn", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[3]/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'choose a value')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b2e2d55a-4039-44ff-9470-cdd2b9675336",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dropdown-element:nth-child(1)",
+      "targets": [
+        ["css=.dropdown-element:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/div[3]/div/div/div/span", "xpath:idRelative"],
+        ["xpath=//div/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Brian Laudrup')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a5defd9-b44d-44ea-9cd1-e9811a2751d6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(4)",
+      "targets": [
+        ["css=.button:nth-child(4)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Create Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a5b897fc-bb06-403c-82d0-391755aadc4c",
+    "name": "Delete Account",
+    "commands": [{
+      "id": "07cd58ed-5014-4d1c-b557-0621e3d13d20",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Account",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5a29c9c3-10e5-4457-94ab-f6d60218eb43",
+      "comment": "",
+      "command": "click",
+      "target": "name=accountNumber",
+      "targets": [
+        ["name=accountNumber", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='accountNumber']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3980248a-8f25-4c5c-aecf-07e9fb8d8056",
+      "comment": "",
+      "command": "type",
+      "target": "name=accountNumber",
+      "targets": [
+        ["name=accountNumber", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='accountNumber']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "123130"
+    }, {
+      "id": "0b3f968f-0f5d-485e-8f69-955192c69804",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(2)",
+      "targets": [
+        ["css=.button:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Delete Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "400c93b3-92fc-4fa1-9fe6-a3b370086190",
+    "name": "Delete non-existing Account",
+    "commands": [{
+      "id": "6092febe-98c6-497a-b891-5d9a732ac713",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/Account",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c917ee54-5d10-4c8c-a900-5e9056038097",
+      "comment": "",
+      "command": "click",
+      "target": "name=accountNumber",
+      "targets": [
+        ["name=accountNumber", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='accountNumber']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e8c9f07-1048-4088-806a-f37a08a593a1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(2)",
+      "targets": [
+        ["css=.button:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Delete Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9028f8d9-93b1-4e8b-87c6-80ec490c83f6",
+      "comment": "",
+      "command": "click",
+      "target": "name=accountNumber",
+      "targets": [
+        ["name=accountNumber", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='accountNumber']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2a3b1ce-f2bf-4772-89cc-e78017520644",
+      "comment": "",
+      "command": "type",
+      "target": "name=accountNumber",
+      "targets": [
+        ["name=accountNumber", "name"],
+        ["css=div:nth-child(2) > .card-container .input-field", "css:finder"],
+        ["xpath=//input[@name='accountNumber']", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "20"
+    }, {
+      "id": "f63187b5-465a-4524-a7b2-ad40f9d5b9b3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button:nth-child(2)",
+      "targets": [
+        ["css=.button:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div[2]/div/div/div[2]/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Delete Account')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "4cffc428-e904-4164-8b35-6ca5ae95b6af",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2229502f-3067-43e6-bf88-aad91a11f9f0"]
+  }],
+  "urls": ["http://localhost:3000/", "http://localhost:3000/bank", "http://localhost:3000/Customer", "http://localhost:3000/Bank", "http://localhost:3000/Account"],
+  "plugins": []
+}
