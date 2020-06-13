@@ -1,7 +1,7 @@
 import { createPool, Pool, PoolConnection } from 'mysql';
 import { MYSQL_PASSWORD, MYSQL_USERNAME, MYSQL_DATABASE } from '../constants';
 
-var connectionPool: Pool;
+let connectionPool: Pool;
 export class DBConnector {
   public constructor() {}
 

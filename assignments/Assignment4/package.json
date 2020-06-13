@@ -33,6 +33,7 @@
     "@types/chai": "^4.2.11",
     "@types/cors": "^2.8.6",
     "@types/mocha": "^7.0.2",
-    "@types/mysql": "^2.15.9"
+    "@types/mysql": "^2.15.9",
+    "tslint": "^6.1.2"
   }
 }

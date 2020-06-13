@@ -1,0 +1,26 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+			"no-empty": true,
+			"no-any": {
+				"severity": "error"
+			},
+			"no-var-keyword": true,
+			"no-unused-variable": true,
+			"no-unused-expression": true,
+			"cyclomatic-complexity": [true, 10],
+			"max-line-length": {
+				"options": [150]
+			},
+			"no-console": {
+				"severity": "warning",
+				"options":["debug", "log", "time", "info", "timeEnd", "trace"]
+			},
+			"only-arrow-functions": true
+		},
+    "rulesDirectory": []
+}
