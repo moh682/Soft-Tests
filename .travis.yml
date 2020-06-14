@@ -1,19 +1,20 @@
 language: node_js
 node_js:  
-   - "node"
+  - "node"
 
 services:
-   - mysql
+  - mysql
 
 env: TEST_MYSQL_USERNAME=root TEST_MYSQL_PASSWORD="" DATABASE="testAsssignment"
 
 stages:
-   - build
+  - build
 
 jobs:
-   include: 
+  include: 
       stage: build
       env: TEST_MYSQL_USERNAME=root TEST_MYSQL_PASSWORD="" DATABASE="testAsssignment" 
-      script: 
-         - npm i;
-         - npm run test 
+      script:
+        - cd assignments/Assignment4
+        - npm i;
+        - npm run test 
