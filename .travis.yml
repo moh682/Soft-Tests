@@ -17,5 +17,5 @@ jobs:
       script: 
         - cd assignments/Assignment4
         - npm i;
-        - mysql -u root < ./sql/sql.sql
+        - mysql -u root < ./sql.sql
         - npm run test 
