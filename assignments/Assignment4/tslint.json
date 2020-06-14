@@ -11,7 +11,9 @@
 			},
 			"no-var-keyword": true,
 			"no-unused-variable": true,
-			"no-unused-expression": true,
+			"no-unused-expression": {
+				"severity": "error"
+			},
 			"cyclomatic-complexity": [true, 10],
 			"max-line-length": {
 				"options": [150]

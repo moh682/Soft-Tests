@@ -23,8 +23,16 @@ import { BankRoute } from './routes/BankRoute';
 import { AccountRoute } from './routes/AccountRoute';
 import { CustomerRoute } from './routes/CustomerRoute';
 
+// let counter = 0;
+
 app.use(bodyParser.json());
 app.use(cors());
+
+// app.use((req, res, next) => {
+// 	counter++;
+// 	console.log('connected: ' + counter );
+// 	next();
+// })
 
 app.use('/movement', MovementRoute);
 app.use('/bank', BankRoute);
