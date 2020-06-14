@@ -5,7 +5,7 @@ node_js:
 services:
   - mysql
 
-env: TEST_MYSQL_USERNAME=root TEST_MYSQL_PASSWORD="" DATABASE="testAsssignment"
+env: TEST_MYSQL_USERNAME=root TEST_MYSQL_PASSWORD="" DATABASE="test_backend"
 
 stages:
   - build
@@ -13,8 +13,9 @@ stages:
 jobs:
   include: 
       stage: build
-      env: TEST_MYSQL_USERNAME=root TEST_MYSQL_PASSWORD="" DATABASE="testAsssignment" 
-      script:
+      env: TEST_MYSQL_USERNAME=root TEST_MYSQL_PASSWORD="" DATABASE="test_backend" 
+      script: 
         - cd assignments/Assignment4
         - npm i;
+        - mysql -u root < ./sql/sql.sql
         - npm run test 
