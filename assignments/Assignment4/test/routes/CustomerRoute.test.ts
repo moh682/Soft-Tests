@@ -66,7 +66,8 @@ describe('Test Customer route', function () {
         expect(c.cpr).to.be.equal(customer.cpr);
         done();
       });
-  });
+	});
+	
   it('test find customer route', function (done) {
     request(server)
       .get('/customer/find')
@@ -84,7 +85,8 @@ describe('Test Customer route', function () {
         expect(res.body.bank_cvr).to.be.equal(customer.bank_cvr);
         done();
       });
-  });
+	});
+	
   it('test delete customer route', function (done) {
     request(server)
       .delete('/customer/delete/')

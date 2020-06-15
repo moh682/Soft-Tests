@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "ENV=TEST mocha --exit -r ts-node/register ./test/{services,database,logic,routes,}/*.test.ts",
+    "test": "ENV=TEST nyc --reporter=text mocha --exit -r ts-node/register ./test/{services,database,logic,routes,}/*.test.ts",
     "start": "ENV=DEV nodemon -e ts,js --exec ts-node ./src/server.ts"
   },
   "keywords": [],
@@ -34,6 +34,7 @@
     "@types/cors": "^2.8.6",
     "@types/mocha": "^7.0.2",
     "@types/mysql": "^2.15.9",
+    "nyc": "^15.1.0",
     "tslint": "^6.1.2"
   }
 }

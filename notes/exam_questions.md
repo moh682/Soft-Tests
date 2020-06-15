@@ -4,6 +4,10 @@
 
 Static testing is checking for defects in software without execution of program.
 
+StyleCop, PMD, FindBugs and solarLint. 
+- Finde potentielle concret problemer
+- Har en stor database der ved hvordan problemer opstår og giver en advarsel på hvad der burde måske blive kigget på.
+
 static testing is code reviews and pair programming we implemented. 
 static analysis we used linters to help os make more optimizable, improveble and maintainable code.  
 
@@ -147,7 +151,7 @@ who performs the tests?
 ## 1.3 Explain what kinds of test can be carried out without running any code. Explain how it can be used on non-code documents as well.
 
 ### Before writing code 
-- **Technical Reviews**
+- **Technical Reviews** 
 - **Informal Reviews**
 - **Acceptance tests**
 
@@ -156,8 +160,20 @@ who performs the tests?
 
 ## 1.4 Explain test activities, and how they are related to each other. Then explain the test activities you carried out in your project.
 
+All tests are there to insure:
+- that the software meets agreed requirements and design
+- that the application works as expected
+- the application doesnt container serious bugs
+- meets its intended use as per user expectation.
+
 - **Unit testing**
-- **Integration testing**
+We implements unit tests through TDD. Where we start by creating a test 
+- **Integration testing** 
+
+value analysis
+- **white-box: Code** We implemented this.
+- **black-box: Specifications** 
+
 - **Refactoring**
 - **Maintenance**
 - **Continuous Integration**
@@ -169,16 +185,20 @@ who performs the tests?
 - **Names of tests**
 - **“sufficient” tests of a method or class**
 - **Assertions, defensive programming**
+assertions and defensive programming, is checking the possibilites of most inputs and find solutions and fallbacks.
 - **Dependency injection**
+Dependancy injections are a somewhat fine solutions for seperating code, which will make it easier to test code. because we have seperated it from the rest making it as much low coupled as possible.
 
 ## 1.6 Explain the concept of maintainable code, and how it’s related to test. Explain how to find out if a code base is maintainable.
 
 - **Maintainability**
 - **Product quality**
 - **Temporal coupling**
+
 - **Continuous Integration**
 - **Static Analysis**
 - **Dependency injection, inversion of control**
+code up to interfaces instead of objects. 
 - **Low coupling, high cohesion**
 - **Cyclomatic code complexity**
 
@@ -215,8 +235,9 @@ Always check the preconditions trust nobody!
  Check your postconditions, doubt yourself !
  Check your invariants, 
 Remember the ACID rules Atomicy Consistency Isolation Durability 
-
+	
 - **Black-box development**
+	- When we dont know what is in our unit/component/
 - **Interfaces, contracts**
 - **Inversion of control**
 - **Dependency Injection**
@@ -228,21 +249,34 @@ Remember the ACID rules Atomicy Consistency Isolation Durability
 - **System resources**
 - **Relations between objects**
 - **Dependency inversion, Inversion of Control, Dependency Injection**
+- **Spies**
+
 - **Mocks**
+
 
 ## 1.12 Explain problems in test automation, and how a continuous integration tool can help.
 
 - **What is continuous integration?**
+	- merge developers work into a single workplace
+	- build
+	- test
+	- deploy
 - **How can a CI help regarding tests?**
 - **What is a regression?**
 - **What test levels can be covered by a CI system?**
 
 ## 1.13 Explain specification-based testing, and how you can be more confident that you have written a sufficient amount of tests.
 
+This type of test require the tester to have knowladge of the code. If you want to that we have written sufficient amount of tests, than 
+
 - **Equivalence partitioning**
+- **Positive negative tests**
 - **Boundary value analysis**
 - **Edge cases**
+	- Only happens in extreme conditions, like when min/max have been hit.
 - **Decision tables**
+	 - possible combinationer
+	 - n*m
 - **Code coverage**
 
 # Extra
